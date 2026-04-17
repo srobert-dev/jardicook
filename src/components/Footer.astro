@@ -1,0 +1,147 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <!-- Logo & tagline -->
+    <div class="footer__brand">
+      <a href="/" aria-label="Jardicook">
+        <img src="/logo jardicook.png" alt="Jardicook — Cuisines Extérieures" width="160" height="54" />
+      </a>
+      <p class="footer__tagline">
+        L'art de cuisiner en plein air.<br />
+        Architecturales, modulaires, toutes saisons.
+      </p>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="footer__nav" aria-label="Liens footer">
+      <h3 class="footer__heading">Navigation</h3>
+      <ul>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/produits">Le POD</a></li>
+        <li><a href="/galerie">Galerie</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/a-propos">À propos</a></li>
+      </ul>
+    </nav>
+
+    <!-- Contact rapide -->
+    <div class="footer__contact">
+      <h3 class="footer__heading">Contact</h3>
+      <p>Demandez un devis personnalisé pour votre projet outdoor.</p>
+      <a href="/contact" class="btn btn-primary" style="margin-top:1rem;">Demander un devis</a>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <div class="container footer__bottom-inner">
+      <p>&copy; {currentYear} Jardicook — Cuisines Extérieures. Tous droits réservés.</p>
+      <p class="footer__legal">
+        <a href="/mentions-legales">Mentions légales</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: var(--color-bg-dark);
+    color: rgba(255, 255, 255, 0.75);
+    margin-top: var(--space-xl);
+  }
+
+  .footer__inner {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr;
+    gap: var(--space-lg);
+    padding-block: var(--space-lg);
+  }
+
+  .footer__brand img {
+    filter: brightness(0) invert(1);
+    margin-bottom: var(--space-sm);
+  }
+
+  .footer__tagline {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .footer__heading {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .footer__nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer__nav a {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+    transition: color var(--transition);
+  }
+
+  .footer__nav a:hover {
+    color: var(--color-white);
+  }
+
+  .footer__contact p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .footer__bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .footer__bottom-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: var(--space-sm);
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .footer__legal a {
+    color: rgba(255, 255, 255, 0.4);
+    transition: color var(--transition);
+  }
+
+  .footer__legal a:hover {
+    color: var(--color-white);
+  }
+
+  @media (max-width: 900px) {
+    .footer__inner {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .footer__brand {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .footer__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .footer__bottom-inner {
+      flex-direction: column;
+      gap: 0.5rem;
+      text-align: center;
+    }
+  }
+</style>

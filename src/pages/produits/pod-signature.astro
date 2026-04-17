@@ -1,0 +1,357 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const specs = [
+  { label: 'Cuisson', value: 'Plancha, brûleurs gaz, four à pizza (option)' },
+  { label: 'Plan de travail', value: 'Pierre céramique ou laiton brossé' },
+  { label: 'Rangements', value: 'Armoires inox + tiroirs coulissants' },
+  { label: 'Éclairage', value: 'LED architectural intégré' },
+  { label: 'Eau courante', value: 'Évier inox + robinet thermostatique' },
+  { label: 'Structure', value: 'Acier inox + bois traité toutes saisons' },
+  { label: 'Dimensions', value: 'Sur-mesure selon votre espace' },
+  { label: 'Usage', value: 'Toutes saisons' },
+];
+
+const points = [
+  { titre: 'L\'expérience complète', texte: 'Eau courante, éclairage, cuisson polyvalente : le POD Signature réunit en une seule structure tout ce dont vous avez besoin pour cuisiner et recevoir dehors.' },
+  { titre: 'Laiton & céramique', texte: 'Les plans de travail en pierre céramique ou laiton brossé confèrent au Signature un caractère noble et intemporel, résistant aux chocs thermiques et aux UV.' },
+  { titre: 'Éclairage architectural', texte: 'LED intégrées dans la structure pour une ambiance parfaite à toute heure. Le Signature se transforme en pièce maîtresse dès la tombée du jour.' },
+  { titre: 'Îlot central', texte: 'La configuration Signature intègre un îlot de travail central pour préparer, dresser et partager, dans un espace pensé pour la convivialité.' },
+];
+---
+
+<BaseLayout
+  title="POD Signature — La Référence Outdoor Haut de Gamme"
+  description="Le POD Signature Jardicook : la cuisine extérieure complète. Cuisson polyvalente, eau courante, îlot central, éclairage LED architectural. La référence haut de gamme."
+>
+
+  <!-- HERO -->
+  <section class="pod-hero">
+    <div class="pod-hero__visual" aria-hidden="true">
+      <div class="pod-hero__image"></div>
+    </div>
+    <div class="pod-hero__content">
+      <nav class="breadcrumb" aria-label="Fil d'Ariane">
+        <a href="/produits">← Tous les POD</a>
+      </nav>
+      <span class="pod-hero__tag">Populaire</span>
+      <h1 class="pod-hero__title">POD Signature</h1>
+      <p class="pod-hero__tagline">La référence de la cuisine outdoor haut de gamme.</p>
+      <p class="pod-hero__desc">
+        La configuration plébiscitée par nos clients. Le POD Signature réunit cuisson polyvalente,
+        eau courante, éclairage architectural et îlot central dans une structure d'exception —
+        pensée pour durer et impressionner.
+      </p>
+      <div class="pod-hero__actions">
+        <a href="/contact" class="btn btn-primary">Demander un devis</a>
+        <a href="/galerie" class="btn btn-outline">Voir des réalisations</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- POINTS FORTS -->
+  <section class="pod-points">
+    <div class="container">
+      <h2 class="section-title">Ce qui le rend exceptionnel</h2>
+      <div class="pod-points__grid">
+        {points.map(p => (
+          <div class="pod-point">
+            <div class="pod-point__dot" aria-hidden="true"></div>
+            <h3>{p.titre}</h3>
+            <p>{p.texte}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <section class="pod-gallery">
+    <div class="container">
+      <h2 class="section-title">Le POD Signature en situation</h2>
+      <div class="pod-gallery__grid">
+        <div class="pod-gallery__main" aria-hidden="true" style="background: linear-gradient(135deg, #1E3A6E, #2C5282)"></div>
+        <div class="pod-gallery__side">
+          <div aria-hidden="true" style="background: linear-gradient(135deg, #14213D, #2C5282)"></div>
+          <div aria-hidden="true" style="background: linear-gradient(135deg, #1E3A6E, #14213D)"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECS -->
+  <section class="pod-specs">
+    <div class="container pod-specs__inner">
+      <div class="pod-specs__content">
+        <h2 class="section-title">Équipements & finitions</h2>
+        <p>Le POD Signature constitue notre configuration de référence. Chaque élément peut être ajusté, remplacé ou enrichi lors de votre consultation personnalisée.</p>
+        <ul class="specs-list">
+          {specs.map(s => (
+            <li class="specs-item">
+              <span class="specs-label">{s.label}</span>
+              <span class="specs-value">{s.value}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="pod-specs__cta-box">
+        <h3>La référence Jardicook</h3>
+        <p>Nos conseillers étudient gratuitement votre espace et vous proposent une configuration personnalisée basée sur le Signature.</p>
+        <a href="/contact" class="btn btn-primary" style="width:100%; text-align:center;">Demander un devis gratuit</a>
+        <a href="/produits" class="pod-specs__back">← Retour au catalogue</a>
+        <div class="pod-specs__nav">
+          <div class="pod-specs__nav-row">
+            <a href="/produits/pod-essentiel" class="pod-specs__nav-btn-sm">← POD Essentiel</a>
+            <a href="/produits/pod-atelier" class="pod-specs__nav-btn-sm">POD Atelier →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .pod-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 75vh;
+  }
+
+  .pod-hero__image {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(160deg, #14213D 0%, #1E3A6E 50%, #2C5282 100%);
+  }
+
+  .pod-hero__content {
+    padding: var(--space-xl) var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-sm);
+    background-color: var(--color-bg);
+  }
+
+  .breadcrumb a {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    transition: color var(--transition);
+  }
+
+  .breadcrumb a:hover { color: var(--color-accent); }
+
+  .pod-hero__tag {
+    display: inline-block;
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.9rem;
+    border-radius: var(--radius-xl);
+    align-self: flex-start;
+  }
+
+  .pod-hero__title {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    color: var(--color-primary);
+    line-height: 1.1;
+  }
+
+  .pod-hero__tagline {
+    font-style: italic;
+    color: var(--color-secondary);
+    font-size: 1.1rem;
+  }
+
+  .pod-hero__desc {
+    color: var(--color-text-light);
+    line-height: 1.75;
+    max-width: 480px;
+  }
+
+  .pod-hero__actions {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    margin-top: var(--space-xs);
+  }
+
+  .btn-outline {
+    background-color: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  .btn-outline:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+
+  .pod-points {
+    padding-block: var(--space-xl);
+    background-color: var(--color-white);
+  }
+
+  .pod-points__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+
+  .pod-point {
+    padding: var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+  }
+
+  .pod-point__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--color-secondary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .pod-point h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary);
+  }
+
+  .pod-point p {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    line-height: 1.65;
+  }
+
+  .pod-gallery {
+    padding-block: var(--space-xl);
+  }
+
+  .pod-gallery__grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 420px;
+    gap: 8px;
+    margin-top: var(--space-md);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .pod-gallery__main { border-radius: var(--radius-md) 0 0 var(--radius-md); }
+
+  .pod-gallery__side {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .pod-gallery__side > div:last-child { border-radius: 0 0 var(--radius-md) 0; }
+
+  .pod-specs {
+    padding-block: var(--space-xl);
+    background-color: var(--color-white);
+  }
+
+  .pod-specs__inner {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: var(--space-lg);
+    align-items: start;
+  }
+
+  .pod-specs__content > p {
+    color: var(--color-text-light);
+    line-height: 1.7;
+    margin-bottom: var(--space-md);
+  }
+
+  .specs-list { border-top: 1px solid var(--color-border); }
+
+  .specs-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 0.9rem;
+  }
+
+  .specs-label { color: var(--color-text-light); font-weight: 500; }
+
+  .specs-value {
+    font-weight: 600;
+    color: var(--color-primary);
+    text-align: right;
+    max-width: 55%;
+  }
+
+  .pod-specs__cta-box {
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    position: sticky;
+    top: 100px;
+  }
+
+  .pod-specs__cta-box h3 { font-size: 1.2rem; color: var(--color-primary); }
+
+  .pod-specs__cta-box p {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+  }
+
+  .pod-specs__back {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    text-align: center;
+    transition: color var(--transition);
+  }
+
+  .pod-specs__back:hover { color: var(--color-primary); }
+
+  .pod-specs__nav { border-top: 1px solid var(--color-border); padding-top: var(--space-sm); }
+
+  .pod-specs__nav-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .pod-specs__nav-btn-sm {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    border: 1.5px solid var(--color-border);
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition);
+  }
+
+  .pod-specs__nav-btn-sm:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+  }
+
+  @media (max-width: 900px) {
+    .pod-hero { grid-template-columns: 1fr; }
+    .pod-hero__visual { height: 280px; }
+    .pod-hero__content { padding: var(--space-lg) var(--space-md); }
+    .pod-points__grid { grid-template-columns: 1fr; }
+    .pod-gallery__grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+    .pod-gallery__main { height: 260px; border-radius: var(--radius-md) var(--radius-md) 0 0; }
+    .pod-gallery__side { grid-template-columns: 1fr 1fr; grid-template-rows: 160px; }
+    .pod-specs__inner { grid-template-columns: 1fr; }
+    .pod-specs__cta-box { position: static; }
+  }
+</style>

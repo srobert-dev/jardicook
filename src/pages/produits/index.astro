@@ -1,0 +1,349 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HeroSection from '../../components/HeroSection.astro';
+
+const pods = [
+  {
+    slug: '/produits/pod-mini',
+    name: 'POD Mini',
+    tag: 'Compact',
+    tagline: 'L\'essentiel du plein air, dans un format maîtrisé.',
+    description: 'Idéal pour les terrasses et jardins de taille intermédiaire. Le POD Mini intègre cuisson, rangements et plan de travail dans une structure compacte et élégante.',
+    image: '/images/Mini pod-blanc.png',
+    imageAlt: 'POD Mini — cuisine extérieure compacte Jardicook',
+  },
+  {
+    slug: '/produits/pod-mid',
+    name: 'POD Mid',
+    tag: 'Polyvalent',
+    tagline: 'La puissance d\'une vraie cuisine, sous le ciel ouvert.',
+    description: 'La configuration complète plébiscitée. Grill gaz 6 feux, eau courante, cave à boissons, hotte et écran TV intégré — une expérience outdoor totale.',
+    image: '/images/mid pod blanc.png',
+    imageAlt: 'POD Mid — cuisine extérieure complète Jardicook',
+  },
+  {
+    slug: '/produits/pod-big',
+    name: 'POD Big',
+    tag: 'Premium',
+    tagline: 'Pour ceux qui ne font aucun compromis.',
+    description: 'La version ultime. Structure sur-mesure, façades bois massif, plancha professionnelle, écran TV et équipements de chef — pour les passionnés et les professionnels.',
+    image: '/images/big pod config 1 .png',
+    imageAlt: 'POD Big — cuisine extérieure premium Jardicook',
+  },
+];
+---
+
+<BaseLayout
+  title="Nos POD — Cuisines Extérieures"
+  description="Découvrez les trois modèles du POD Jardicook : Mini, Mid et Big. Cuisines extérieures architecturales, modulaires, entièrement sur-mesure."
+>
+
+  <HeroSection
+    title="Choisissez<br />votre POD."
+    subtitle="Trois modèles conçus pour répondre à chaque projet outdoor, du plus élégant au plus ambitieux. Chacun est entièrement personnalisable."
+    ctaLabel="Demander un devis"
+    ctaHref="/contact"
+    tall={false}
+  />
+
+  <!-- CARDS CATALOGUE -->
+  <section class="catalog-section">
+    <div class="container">
+      <div class="catalog-grid">
+        {pods.map(pod => (
+          <article class="pod-card">
+            <a href={pod.slug} class="pod-card__image-link" aria-label={`Découvrir le ${pod.name}`}>
+              <div class="pod-card__image-wrapper">
+                <img
+                  src={pod.image}
+                  alt={pod.imageAlt}
+                  class="pod-card__image"
+                  loading="lazy"
+                />
+              </div>
+            </a>
+            <div class="pod-card__body">
+              <div class="pod-card__header">
+                <span class="pod-card__tag">{pod.tag}</span>
+              </div>
+              <h2 class="pod-card__title">{pod.name}</h2>
+              <p class="pod-card__tagline">{pod.tagline}</p>
+              <p class="pod-card__desc">{pod.description}</p>
+              <div class="pod-card__footer">
+                <a href={pod.slug} class="btn btn-primary">Découvrir ce POD</a>
+                <a href="/contact" class="pod-card__devis-link">Demander un devis →</a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARATIF -->
+  <section class="compare">
+    <div class="container">
+      <h2 class="section-title" style="text-align:center; margin-bottom:var(--space-md);">Comparer les modèles</h2>
+      <div class="compare-table-wrapper">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Équipement</th>
+              <th>POD Mini</th>
+              <th>POD Mid</th>
+              <th>POD Big</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cuisson plancha / grill</td>
+              <td class="check">✓</td>
+              <td class="check">✓ Gaz 6 feux</td>
+              <td class="check">✓ Pro</td>
+            </tr>
+            <tr>
+              <td>Plan de travail</td>
+              <td class="check">✓ Pierre</td>
+              <td class="check">✓ Pierre</td>
+              <td class="check">✓ Sur-mesure</td>
+            </tr>
+            <tr>
+              <td>Eau courante + évier</td>
+              <td class="neutral">En option</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+            </tr>
+            <tr>
+              <td>Cave à boissons intégrée</td>
+              <td class="cross">—</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+            </tr>
+            <tr>
+              <td>Hotte aspirante</td>
+              <td class="neutral">En option</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+            </tr>
+            <tr>
+              <td>Écran TV intégré</td>
+              <td class="cross">—</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+            </tr>
+            <tr>
+              <td>Façades bois massif</td>
+              <td class="cross">—</td>
+              <td class="neutral">En option</td>
+              <td class="check">✓</td>
+            </tr>
+            <tr>
+              <td>Éclairage LED architectural</td>
+              <td class="neutral">En option</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="catalog-cta">
+    <div class="container catalog-cta__inner">
+      <h2>Vous avez un projet en tête ?</h2>
+      <p>Discutons ensemble de votre espace et de vos envies. Notre équipe vous accompagne de la conception à la pose.</p>
+      <a href="/contact" class="btn btn-primary">Demander un devis gratuit</a>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .catalog-section {
+    padding-block: var(--space-xl);
+    background-color: var(--color-border);
+  }
+
+  .catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+  }
+
+  .pod-card {
+    background-color: var(--color-bg);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(44, 32, 16, 0.08);
+    transition: transform var(--transition), box-shadow var(--transition);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pod-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 48px rgba(44, 32, 16, 0.16);
+  }
+
+  .pod-card__image-link {
+    display: block;
+    overflow: hidden;
+  }
+
+  .pod-card__image-wrapper {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background-color: #f0ede6;
+  }
+
+  .pod-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .pod-card:hover .pod-card__image {
+    transform: scale(1.04);
+  }
+
+  .pod-card__body {
+    padding: var(--space-md);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .pod-card__tag {
+    display: inline-block;
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-xl);
+  }
+
+  .pod-card__title {
+    font-size: 1.6rem;
+    color: var(--color-primary);
+    margin-top: var(--space-xs);
+  }
+
+  .pod-card__tagline {
+    font-style: italic;
+    color: var(--color-secondary);
+    font-size: 0.95rem;
+  }
+
+  .pod-card__desc {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  .pod-card__footer {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    margin-top: var(--space-sm);
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .pod-card__devis-link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text-light);
+    transition: color var(--transition);
+  }
+
+  .pod-card__devis-link:hover {
+    color: var(--color-accent);
+  }
+
+  /* Comparatif */
+  .compare {
+    padding-block: var(--space-xl);
+    background-color: var(--color-bg);
+  }
+
+  .compare-table-wrapper {
+    overflow-x: auto;
+    border-radius: var(--radius-md);
+    box-shadow: 0 2px 16px rgba(44,32,16,0.07);
+  }
+
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+
+  .compare-table th {
+    background-color: var(--color-primary);
+    color: var(--color-chalk);
+    padding: 1rem 1.25rem;
+    text-align: left;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+  }
+
+  .compare-table td {
+    padding: 0.85rem 1.25rem;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text);
+  }
+
+  .compare-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .compare-table tr:nth-child(even) td {
+    background-color: rgba(240,237,230,0.5);
+  }
+
+  .compare-table .check { color: #5A8A5A; font-weight: 700; }
+  .compare-table .neutral { color: var(--color-text-light); font-style: italic; }
+  .compare-table .cross { color: #ccc; }
+
+  /* CTA */
+  .catalog-cta {
+    background-color: var(--color-primary);
+    padding-block: var(--space-lg);
+  }
+
+  .catalog-cta__inner {
+    text-align: center;
+    max-width: 600px;
+    margin-inline: auto;
+  }
+
+  .catalog-cta__inner h2 {
+    color: var(--color-chalk);
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    margin-bottom: var(--space-sm);
+  }
+
+  .catalog-cta__inner p {
+    color: rgba(245,240,232,0.75);
+    line-height: 1.7;
+    margin-bottom: var(--space-md);
+  }
+
+  @media (max-width: 900px) {
+    .catalog-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .pod-card__footer { flex-direction: column; align-items: flex-start; }
+  }
+</style>

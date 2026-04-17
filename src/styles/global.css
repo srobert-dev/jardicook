@@ -1,0 +1,153 @@
+/* ============================================================
+   JARDICOOK — Styles globaux
+   ============================================================ */
+
+/* Variables de charte graphique */
+:root {
+  /* Palette Nature & Luxe Organique */
+  --color-primary:   #2C2010;   /* Brun Profond — textes, header */
+  --color-secondary: #C4956A;   /* Sable Doré — boutons CTA, accents */
+  --color-accent:    #C4956A;   /* Sable Doré — boutons principaux */
+  --color-bg:        #F5F0E8;   /* Lin Chaud — fond principal */
+  --color-bg-dark:   #1A1208;   /* Terre Nocturne — footer, sections sombres */
+  --color-text:      #2C2010;   /* Brun Profond — textes principaux */
+  --color-text-light:#8C7B68;   /* Brun Sable — textes secondaires */
+  --color-border:    #E8E0D0;   /* Crème Naturelle — séparateurs, cartes */
+  --color-chalk:     #F5F0E8;   /* Lin — typographie sur fonds sombres */
+  --color-white:     #FFFFFF;
+
+  /* Typographie */
+  --font-heading: 'Georgia', 'Times New Roman', serif;
+  --font-body:    'Helvetica Neue', 'Arial', sans-serif;
+
+  /* Espacements */
+  --space-xs:  0.5rem;
+  --space-sm:  1rem;
+  --space-md:  2rem;
+  --space-lg:  4rem;
+  --space-xl:  6rem;
+
+  /* Largeur max du contenu */
+  --max-width: 1280px;
+
+  /* Arrondis */
+  --radius-sm:  8px;
+  --radius-md:  14px;
+  --radius-lg:  20px;
+  --radius-xl:  32px;
+
+  /* Transitions */
+  --transition: 0.25s ease;
+}
+
+/* ---- Reset ---- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.7;
+  font-size: 1rem;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  color: var(--color-primary);
+}
+
+/* ---- Utilitaires ---- */
+.container {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-xs);
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--color-text-light);
+  margin-bottom: var(--space-md);
+}
+
+.accent {
+  color: var(--color-secondary);
+}
+
+/* Boutons */
+.btn {
+  display: inline-block;
+  padding: 0.85rem 2rem;
+  border-radius: var(--radius-xl);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: background-color var(--transition), color var(--transition), border-color var(--transition);
+}
+
+.btn-primary {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  border-color: var(--color-accent);
+}
+
+.btn-primary:hover {
+  background-color: #a87a52;
+  border-color: #a87a52;
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-white);
+  border-color: var(--color-white);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+}
+
+.btn-dark {
+  background-color: var(--color-primary);
+  color: var(--color-chalk);
+  border-color: var(--color-primary);
+}
+
+.btn-dark:hover {
+  background-color: #3d2d18;
+  border-color: #3d2d18;
+}

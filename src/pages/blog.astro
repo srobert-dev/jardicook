@@ -1,0 +1,303 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+
+const articles = [
+  {
+    slug: '/blog/cuisine-exterieure-haut-de-gamme-criteres',
+    title: 'Cuisine extérieure haut de gamme : les 7 critères qui distinguent le premium de l\'ordinaire',
+    excerpt: 'Matériaux, conception architecturale, finitions, sur-mesure, service… Comment reconnaître une vraie cuisine extérieure premium avant d\'investir ? Les 7 critères objectifs.',
+    category: 'Design & Architecture',
+    date: '13 avril 2026',
+    readTime: '8 min',
+  },
+  {
+    slug: '/blog/cuisine-exterieure-modulaire-rabattable',
+    title: 'Le POD Jardicook : qu\'est-ce qu\'une cuisine extérieure modulaire et rabattable ?',
+    excerpt: 'Découvrez le concept du POD : une cuisine extérieure architecturale, modulaire et rabattable, conçue pour un usage toute l\'année avec un design haut de gamme.',
+    category: 'Conception & Techniques',
+    date: '13 avril 2026',
+    readTime: '6 min',
+  },
+  {
+    slug: '/blog/cuisine-exterieure-toute-annee',
+    title: 'Cuisine extérieure toute l\'année : profiter de votre jardin en hiver comme en été',
+    excerpt: 'Votre cuisine extérieure ne devrait pas hiberner 6 mois par an. Matériaux 4 saisons, conception rabattable, chauffage infrarouge : le guide complet pour cuisiner dehors toute l\'année.',
+    category: 'Conception & Techniques',
+    date: '13 avril 2026',
+    readTime: '6 min',
+  },
+  {
+    slug: '/blog/permis-construire-cuisine-exterieure',
+    title: 'Faut-il un permis de construire pour une cuisine extérieure ? Règles et démarches en France',
+    excerpt: 'Ce que dit vraiment la loi : seuils de déclaration, rôle du PLU, différence juridique entre cuisine fixe et POD modulaire. Tout ce qu\'il faut savoir avant de se lancer.',
+    category: 'Conception & Techniques',
+    date: '13 avril 2026',
+    readTime: '7 min',
+  },
+  {
+    slug: '#',
+    title: 'Cuisines extérieures et hôtellerie : une alliance gagnante',
+    excerpt: 'De plus en plus d\'établissements hôteliers et de restaurants font appel à Jardicook pour enrichir leur offre outdoor. Retour sur quelques projets emblématiques.',
+    category: 'Réalisations',
+    date: 'Prochainement',
+    readTime: '8 min',
+  },
+  {
+    slug: '#',
+    title: 'Tendances cuisine extérieure 2026 : design architectural et art de vivre outdoor',
+    excerpt: 'Matériaux bruts, modularité, outdoor connecté : les grandes tendances qui redéfinissent la cuisine extérieure haut de gamme en 2026.',
+    category: 'Inspiration',
+    date: 'Prochainement',
+    readTime: '5 min',
+  },
+];
+
+const categories = ['Tous', 'Design & Architecture', 'Conception & Techniques', 'Réalisations', 'Inspiration', 'Art de vivre & Recettes'];
+---
+
+<BaseLayout
+  title="Blog — Inspirations & Conseils"
+  description="Le blog Jardicook : conseils d'intégration, inspirations outdoor, techniques de construction et art de vivre autour de la cuisine extérieure."
+>
+
+  <HeroSection
+    title="Inspirations &<br />savoir-faire outdoor."
+    subtitle="Conseils, réalisations, tendances et recettes : le blog Jardicook accompagne votre projet de cuisine extérieure de l'inspiration à la réalisation."
+    ctaLabel="Voir les produits"
+    ctaHref="/produits"
+    tall={false}
+  />
+
+  <section class="blog-section">
+    <div class="container">
+
+      <!-- Article à la une -->
+      <div class="blog-featured">
+        <div class="blog-featured__image" aria-hidden="true"></div>
+        <div class="blog-featured__content">
+          <span class="blog-featured__category">{articles[0].category}</span>
+          <h2 class="blog-featured__title">
+            <a href={articles[0].slug}>{articles[0].title}</a>
+          </h2>
+          <p class="blog-featured__excerpt">{articles[0].excerpt}</p>
+          <div class="blog-featured__meta">
+            <span>{articles[0].date}</span>
+            <span>·</span>
+            <span>Lecture : {articles[0].readTime}</span>
+          </div>
+          <a href={articles[0].slug} class="btn btn-primary" style="margin-top:var(--space-sm);">
+            Lire l'article
+          </a>
+        </div>
+      </div>
+
+      <!-- Grille articles -->
+      <div class="blog-grid">
+        {articles.slice(1).map(article => (
+          <article class={`blog-card ${article.slug === '#' ? 'blog-card--soon' : ''}`}>
+            <div class="blog-card__image" aria-hidden="true">
+              {article.slug === '#' && <span class="blog-card__soon-badge">Prochainement</span>}
+            </div>
+            <div class="blog-card__body">
+              <span class="blog-card__category">{article.category}</span>
+              <h3 class="blog-card__title">
+                {article.slug !== '#'
+                  ? <a href={article.slug}>{article.title}</a>
+                  : <span>{article.title}</span>
+                }
+              </h3>
+              <p class="blog-card__excerpt">{article.excerpt}</p>
+              <div class="blog-card__meta">
+                <span>{article.date}</span>
+                <span>·</span>
+                <span>{article.readTime} de lecture</span>
+              </div>
+              {article.slug !== '#' && (
+                <a href={article.slug} class="blog-card__read-link">Lire l'article →</a>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .blog-section {
+    padding-block: var(--space-xl);
+  }
+
+  /* ---- Featured ---- */
+  .blog-featured {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: var(--space-lg);
+    align-items: center;
+    margin-bottom: var(--space-xl);
+    padding-bottom: var(--space-xl);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .blog-featured__image {
+    aspect-ratio: 16/10;
+    background: linear-gradient(135deg, #1a1a1a 0%, #3a3a3a 100%);
+    border-radius: var(--radius-md);
+  }
+
+  .blog-featured__category {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    margin-bottom: 0.75rem;
+  }
+
+  .blog-featured__title {
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    margin-bottom: var(--space-sm);
+    line-height: 1.25;
+  }
+
+  .blog-featured__title a {
+    color: var(--color-primary);
+    transition: color var(--transition);
+  }
+
+  .blog-featured__title a:hover {
+    color: var(--color-secondary);
+  }
+
+  .blog-featured__excerpt {
+    color: var(--color-text-light);
+    line-height: 1.7;
+    margin-bottom: var(--space-sm);
+  }
+
+  .blog-featured__meta {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+  }
+
+  /* ---- Blog grid ---- */
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+  }
+
+  .blog-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+    transition: box-shadow var(--transition);
+  }
+
+  .blog-card:hover {
+    box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+  }
+
+  .blog-card__image {
+    aspect-ratio: 16/9;
+    background: linear-gradient(135deg, #2a2a2a 0%, #484848 100%);
+  }
+
+  .blog-card__body {
+    padding: var(--space-md);
+  }
+
+  .blog-card__category {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    margin-bottom: 0.5rem;
+  }
+
+  .blog-card__title {
+    font-size: 1.05rem;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+  }
+
+  .blog-card__title a {
+    color: var(--color-primary);
+    transition: color var(--transition);
+  }
+
+  .blog-card__title a:hover {
+    color: var(--color-secondary);
+  }
+
+  .blog-card__excerpt {
+    font-size: 0.88rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin-bottom: var(--space-sm);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .blog-card__meta {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+    margin-bottom: 0.75rem;
+  }
+
+  .blog-card__read-link {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-secondary);
+    letter-spacing: 0.04em;
+    transition: color var(--transition);
+  }
+
+  .blog-card__read-link:hover { color: var(--color-primary); }
+
+  .blog-card--soon { opacity: 0.65; }
+
+  .blog-card__soon-badge {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    background: var(--color-primary);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.65rem;
+    border-radius: var(--radius-xl);
+  }
+
+  .blog-card__image { position: relative; }
+
+  @media (max-width: 900px) {
+    .blog-featured {
+      grid-template-columns: 1fr;
+    }
+
+    .blog-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

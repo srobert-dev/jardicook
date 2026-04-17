@@ -1,0 +1,231 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<BaseLayout
+  title="Contact — Demande de devis"
+  description="Contactez Jardicook pour demander un devis personnalisé pour votre cuisine extérieure POD. Nous répondons à toutes vos questions sous 48h."
+>
+
+  <section class="contact-hero">
+    <div class="container contact-hero__inner">
+      <div class="contact-hero__text">
+        <span class="contact-eyebrow">Parlons de votre projet</span>
+        <h1 class="contact-title">Demander un devis.</h1>
+        <p>
+          Chaque POD est unique. Décrivez-nous votre espace, vos usages et vos envies —
+          notre équipe vous répond sous 48 heures avec une première proposition personnalisée.
+        </p>
+
+        <div class="contact-infos">
+          <div class="contact-info">
+            <span class="contact-info__label">Email</span>
+            <a href="mailto:contact@jardicook.fr" class="contact-info__value">contact@jardicook.fr</a>
+          </div>
+          <div class="contact-info">
+            <span class="contact-info__label">Téléphone</span>
+            <a href="tel:+33XXXXXXXXX" class="contact-info__value">+33 X XX XX XX XX</a>
+          </div>
+          <div class="contact-info">
+            <span class="contact-info__label">Délai de réponse</span>
+            <span class="contact-info__value">Sous 48 heures ouvrées</span>
+          </div>
+        </div>
+
+        <!-- Garanties -->
+        <div class="contact-guarantees">
+          <div class="guarantee">
+            <span class="guarantee__icon" aria-hidden="true">✓</span>
+            <span>Devis gratuit et sans engagement</span>
+          </div>
+          <div class="guarantee">
+            <span class="guarantee__icon" aria-hidden="true">✓</span>
+            <span>Accompagnement de A à Z</span>
+          </div>
+          <div class="guarantee">
+            <span class="guarantee__icon" aria-hidden="true">✓</span>
+            <span>Réalisation 100% sur-mesure</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-hero__form">
+        <div class="contact-form-wrapper">
+          <ContactForm />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROFESSIONNELS -->
+  <section class="contact-pro">
+    <div class="container contact-pro__inner">
+      <div class="contact-pro__badge" aria-hidden="true">
+        <span>PRO</span>
+      </div>
+      <div class="contact-pro__content">
+        <h2>Vous êtes architecte, paysagiste ou professionnel de l'hôtellerie ?</h2>
+        <p>
+          Jardicook propose un accompagnement dédié aux professionnels : tarifs spéciaux,
+          visualisations 3D intégrées à vos plans, interlocuteur dédié et suivi de chantier
+          renforcé. Mentionnez votre profil dans le formulaire ou contactez directement notre
+          département projets professionnels.
+        </p>
+        <a href="mailto:pro@jardicook.fr" class="btn btn-dark">Contacter l'équipe pro</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* ---- Hero contact ---- */
+  .contact-hero {
+    padding-block: var(--space-xl);
+    background-color: var(--color-white);
+  }
+
+  .contact-hero__inner {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: var(--space-lg);
+    align-items: start;
+  }
+
+  .contact-eyebrow {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .contact-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: var(--space-sm);
+  }
+
+  .contact-hero__text > p {
+    color: var(--color-text-light);
+    line-height: 1.75;
+    margin-bottom: var(--space-md);
+  }
+
+  .contact-infos {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: var(--space-md);
+    padding: var(--space-sm) 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .contact-info {
+    display: flex;
+    gap: var(--space-sm);
+    align-items: baseline;
+  }
+
+  .contact-info__label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-light);
+    min-width: 130px;
+  }
+
+  .contact-info__value {
+    font-size: 0.95rem;
+    color: var(--color-primary);
+    font-weight: 500;
+    transition: color var(--transition);
+  }
+
+  a.contact-info__value:hover {
+    color: var(--color-secondary);
+  }
+
+  .contact-guarantees {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .guarantee {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+  }
+
+  .guarantee__icon {
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+
+  .contact-form-wrapper {
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+  }
+
+  /* ---- Pro section ---- */
+  .contact-pro {
+    background-color: var(--color-bg);
+    padding-block: var(--space-lg);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .contact-pro__inner {
+    display: flex;
+    gap: var(--space-md);
+    align-items: center;
+  }
+
+  .contact-pro__badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 80px;
+    height: 80px;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-secondary);
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+  }
+
+  .contact-pro__content h2 {
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-pro__content p {
+    color: var(--color-text-light);
+    line-height: 1.7;
+    margin-bottom: var(--space-sm);
+    font-size: 0.95rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .contact-hero__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-pro__inner {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>

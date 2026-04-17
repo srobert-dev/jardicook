@@ -1,0 +1,115 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  ctaSecondaryLabel?: string;
+  ctaSecondaryHref?: string;
+  bgImage?: string;
+  overlay?: boolean;
+  tall?: boolean;
+}
+
+const {
+  title,
+  subtitle,
+  ctaLabel = 'Découvrir le POD',
+  ctaHref = '/produits',
+  ctaSecondaryLabel,
+  ctaSecondaryHref,
+  bgImage,
+  overlay = true,
+  tall = true,
+} = Astro.props;
+---
+
+<section class={`hero ${tall ? 'hero--tall' : ''}`} style={bgImage ? `--hero-bg: url('${bgImage}')` : ''}>
+  {overlay && bgImage && <div class="hero__overlay" aria-hidden="true"></div>}
+
+  <div class="container hero__content">
+    <p class="hero__label">Le POD — Cuisine Extérieure Architecturale</p>
+    <h1 class="hero__title" set:html={title}></h1>
+    {subtitle && <p class="hero__subtitle">{subtitle}</p>}
+    <div class="hero__actions">
+      <a href={ctaHref} class="btn btn-primary">{ctaLabel}</a>
+      {ctaSecondaryLabel && ctaSecondaryHref &&
+        <a href={ctaSecondaryHref} class="btn btn-outline">{ctaSecondaryLabel}</a>
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    background-color: #2C2010;
+    background-image: var(--hero-bg, linear-gradient(160deg, #1A1208 0%, #2C2010 55%, #5C3D20 100%));
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero--tall {
+    min-height: 88vh;
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(28, 28, 28, 0.78) 0%,
+      rgba(28, 28, 28, 0.35) 100%
+    );
+    pointer-events: none;
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    padding-block: var(--space-xl);
+  }
+
+  .hero__label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .hero__title {
+    font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+    color: var(--color-white);
+    line-height: 1.1;
+    margin-bottom: var(--space-sm);
+  }
+
+  .hero__subtitle {
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    color: #EBEBEB;
+    line-height: 1.65;
+    margin-bottom: var(--space-md);
+    max-width: 560px;
+  }
+
+  .hero__actions {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 600px) {
+    .hero__content {
+      padding-block: var(--space-lg);
+    }
+
+    .hero--tall {
+      min-height: 75vh;
+    }
+  }
+</style>

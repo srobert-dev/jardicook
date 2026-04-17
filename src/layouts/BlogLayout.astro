@@ -1,0 +1,428 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  category: string;
+  date: string;
+  readTime: string;
+  ogImage?: string;
+}
+
+const { title, description, category, date, readTime, ogImage } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} ogImage={ogImage}>
+
+  <!-- Barre de progression lecture -->
+  <div class="reading-progress" id="reading-progress"></div>
+
+  <article class="blog-article">
+
+    <!-- En-tête article -->
+    <header class="article-header">
+      <div class="container article-header__inner">
+        <nav class="article-breadcrumb" aria-label="Fil d'Ariane">
+          <a href="/">Accueil</a>
+          <span aria-hidden="true">›</span>
+          <a href="/blog">Blog</a>
+          <span aria-hidden="true">›</span>
+          <span>{category}</span>
+        </nav>
+        <span class="article-category">{category}</span>
+        <h1 class="article-title">{title}</h1>
+        <p class="article-description">{description}</p>
+        <div class="article-meta">
+          <time datetime={date}>{date}</time>
+          <span aria-hidden="true">·</span>
+          <span>{readTime} de lecture</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Image hero article -->
+    <div class="article-hero-img" aria-hidden="true"></div>
+
+    <!-- Corps de l'article -->
+    <div class="container article-layout">
+      <div class="article-body">
+        <slot />
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="article-sidebar">
+
+        <!-- CTA devis -->
+        <div class="sidebar-cta">
+          <p class="sidebar-cta__eyebrow">Votre projet</p>
+          <h3 class="sidebar-cta__title">Vous avez un projet de cuisine extérieure ?</h3>
+          <p class="sidebar-cta__text">Nos experts vous accompagnent de la conception à la pose. Devis gratuit sous 48h.</p>
+          <a href="/contact" class="btn btn-primary sidebar-cta__btn">Demander un devis gratuit</a>
+          <a href="/configurateur" class="btn btn-dark sidebar-cta__btn">Configurer mon POD</a>
+        </div>
+
+        <!-- Articles liés -->
+        <div class="sidebar-related">
+          <p class="sidebar-related__title">À lire aussi</p>
+          <ul class="sidebar-related__list">
+            <li><a href="/blog/cuisine-exterieure-haut-de-gamme-criteres">Les 7 critères d'une cuisine extérieure haut de gamme</a></li>
+            <li><a href="/blog/cuisine-exterieure-toute-annee">Cuisiner dehors toute l'année : c'est possible</a></li>
+            <li><a href="/blog/cuisine-exterieure-terrasse">Cuisine extérieure sur terrasse : optimiser l'espace</a></li>
+            <li><a href="/blog/permis-construire-cuisine-exterieure">Permis de construire : ce que dit la loi</a></li>
+          </ul>
+        </div>
+
+      </aside>
+    </div>
+
+    <!-- CTA de fin d'article -->
+    <section class="article-cta-end">
+      <div class="container article-cta-end__inner">
+        <div>
+          <p class="article-cta-end__eyebrow">Jardicook</p>
+          <h2 class="article-cta-end__title">Prêt à concrétiser votre projet ?</h2>
+          <p class="article-cta-end__text">Le POD est entièrement sur-mesure. Chaque projet est unique. Parlons du vôtre.</p>
+        </div>
+        <div class="article-cta-end__actions">
+          <a href="/contact" class="btn btn-primary">Demander un devis</a>
+          <a href="/produits" class="btn btn-outline-light">Découvrir le POD</a>
+        </div>
+      </div>
+    </section>
+
+  </article>
+
+</BaseLayout>
+
+<script>
+  // Barre de progression lecture
+  const bar = document.getElementById('reading-progress');
+  const article = document.querySelector('.article-body') as HTMLElement;
+  if (bar && article) {
+    window.addEventListener('scroll', () => {
+      const rect = article.getBoundingClientRect();
+      const total = article.offsetHeight - window.innerHeight;
+      const scrolled = Math.max(0, -rect.top);
+      const pct = Math.min(100, (scrolled / total) * 100);
+      bar.style.width = `${pct}%`;
+    }, { passive: true });
+  }
+</script>
+
+<style>
+  /* ── Barre de progression ── */
+  .reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: var(--color-secondary);
+    z-index: 200;
+    transition: width 0.1s linear;
+  }
+
+  /* ── Header ── */
+  .article-header {
+    background: var(--color-white);
+    padding-block: var(--space-lg);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .article-header__inner { max-width: 780px; }
+
+  .article-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.78rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--space-sm);
+  }
+
+  .article-breadcrumb a {
+    color: var(--color-text-light);
+    transition: color var(--transition);
+  }
+
+  .article-breadcrumb a:hover { color: var(--color-secondary); }
+
+  .article-category {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    background: rgba(196,149,106,0.1);
+    padding: 0.2rem 0.7rem;
+    border-radius: var(--radius-xl);
+    margin-bottom: 0.9rem;
+  }
+
+  .article-title {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    line-height: 1.2;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    max-width: 780px;
+  }
+
+  .article-description {
+    font-size: 1.05rem;
+    color: var(--color-text-light);
+    line-height: 1.7;
+    max-width: 680px;
+    margin-bottom: 1.25rem;
+  }
+
+  .article-meta {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.83rem;
+    color: var(--color-text-light);
+  }
+
+  /* ── Hero image ── */
+  .article-hero-img {
+    width: 100%;
+    height: 420px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, #3a2a1a 100%);
+    margin-bottom: 0;
+  }
+
+  /* ── Layout 2 colonnes ── */
+  .article-layout {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: var(--space-xl);
+    align-items: start;
+    padding-block: var(--space-xl);
+  }
+
+  /* ── Corps article ── */
+  .article-body {
+    min-width: 0;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--color-text);
+  }
+
+  .article-body :global(h2) {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-secondary);
+    display: inline-block;
+  }
+
+  .article-body :global(h3) {
+    font-size: 1.1rem;
+    color: var(--color-primary);
+    margin: 1.75rem 0 0.6rem;
+  }
+
+  .article-body :global(p) {
+    margin-bottom: 1.25rem;
+    color: var(--color-text);
+  }
+
+  .article-body :global(ul),
+  .article-body :global(ol) {
+    margin: 0 0 1.25rem 1.5rem;
+  }
+
+  .article-body :global(li) {
+    margin-bottom: 0.5rem;
+    line-height: 1.7;
+  }
+
+  .article-body :global(strong) {
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  .article-body :global(blockquote) {
+    border-left: 4px solid var(--color-secondary);
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    background: rgba(196,149,106,0.06);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    font-style: italic;
+    color: var(--color-text-light);
+  }
+
+  .article-body :global(.highlight-box) {
+    background: var(--color-white);
+    border: 1.5px solid var(--color-secondary);
+    border-radius: var(--radius-md);
+    padding: 1.25rem 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .article-body :global(.highlight-box p) { margin-bottom: 0; }
+
+  .article-body :global(a) {
+    color: var(--color-secondary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* ── Sidebar ── */
+  .article-sidebar {
+    position: sticky;
+    top: calc(88px + var(--space-md));
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .sidebar-cta {
+    background: var(--color-primary);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .sidebar-cta__eyebrow {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    margin: 0;
+  }
+
+  .sidebar-cta__title {
+    font-size: 1rem;
+    color: #fff;
+    margin: 0;
+    line-height: 1.35;
+  }
+
+  .sidebar-cta__text {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .sidebar-cta__btn { width: 100%; text-align: center; }
+
+  .sidebar-related {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+  }
+
+  .sidebar-related__title {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-text-light);
+    margin-bottom: 0.85rem;
+  }
+
+  .sidebar-related__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .sidebar-related__list li {
+    border-bottom: 1px solid var(--color-border);
+    padding: 0.55rem 0;
+  }
+
+  .sidebar-related__list li:last-child { border-bottom: none; }
+
+  .sidebar-related__list a {
+    font-size: 0.82rem;
+    color: var(--color-text);
+    line-height: 1.4;
+    transition: color var(--transition);
+  }
+
+  .sidebar-related__list a:hover { color: var(--color-secondary); }
+
+  /* ── CTA fin d'article ── */
+  .article-cta-end {
+    background: var(--color-primary);
+    padding-block: var(--space-lg);
+    margin-top: 0;
+  }
+
+  .article-cta-end__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+
+  .article-cta-end__eyebrow {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    margin-bottom: 0.4rem;
+  }
+
+  .article-cta-end__title {
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+
+  .article-cta-end__text {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.9rem;
+    max-width: 500px;
+  }
+
+  .article-cta-end__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    flex-shrink: 0;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 1024px) {
+    .article-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .article-sidebar {
+      position: static;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .article-hero-img { height: 240px; }
+
+    .article-sidebar {
+      grid-template-columns: 1fr;
+    }
+
+    .article-cta-end__inner {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .article-cta-end__text { margin-inline: auto; }
+
+    .article-cta-end__actions { width: 100%; }
+    .article-cta-end__actions .btn { text-align: center; }
+  }
+</style>

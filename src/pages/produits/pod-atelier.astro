@@ -1,0 +1,357 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const specs = [
+  { label: 'Cuisson', value: 'Plancha pro, brûleurs, fourneau, fumoir' },
+  { label: 'Plan de travail', value: 'Sur-mesure : pierre, béton ciré ou inox' },
+  { label: 'Rangements', value: 'Configuration entièrement personnalisée' },
+  { label: 'Éclairage', value: 'Système LED + spots directionnels' },
+  { label: 'Eau courante', value: 'Double évier inox + lave-mains' },
+  { label: 'Structure', value: 'Entièrement sur-mesure et sur-devis' },
+  { label: 'Intégration', value: 'Architecture existante, piscine, pergola...' },
+  { label: 'Usage', value: 'Toutes saisons, professionnel' },
+];
+
+const points = [
+  { titre: 'Équipements de chef', texte: 'Fourneau professionnel, fumoir intégré, brûleurs haute puissance : le POD Atelier offre des performances dignes des plus grandes cuisines, en plein air.' },
+  { titre: 'Intégration architecturale', texte: 'Le POD Atelier est pensé comme une extension permanente de votre architecture. Il s\'intègre dans votre pergola, votre pool-house ou votre jardin comme s\'il avait toujours été là.' },
+  { titre: 'Matières d\'exception', texte: 'Béton ciré, inox poli miroir, pierre de Bourgogne, laiton vieilli... Chaque surface est choisie avec soin pour un rendu unique et des décennies de durabilité.' },
+  { titre: 'Sur-mesure absolu', texte: 'Dimensions, équipements, finitions, orientation, éclairage : tout est défini ensemble lors d\'une consultation approfondie. Il n\'existe pas deux POD Atelier identiques.' },
+];
+---
+
+<BaseLayout
+  title="POD Atelier — La Cuisine Extérieure Ultime"
+  description="Le POD Atelier Jardicook : la version ultime de la cuisine extérieure. Équipements de chef, matières d'exception, intégration architecturale sur-mesure totale."
+>
+
+  <!-- HERO -->
+  <section class="pod-hero">
+    <div class="pod-hero__visual" aria-hidden="true">
+      <div class="pod-hero__image"></div>
+    </div>
+    <div class="pod-hero__content">
+      <nav class="breadcrumb" aria-label="Fil d'Ariane">
+        <a href="/produits">← Tous les POD</a>
+      </nav>
+      <span class="pod-hero__tag">Premium</span>
+      <h1 class="pod-hero__title">POD Atelier</h1>
+      <p class="pod-hero__tagline">Pour ceux qui ne font aucun compromis.</p>
+      <p class="pod-hero__desc">
+        La version ultime de la cuisine extérieure Jardicook. Conçu pour les passionnés de
+        gastronomie et les professionnels de l'hôtellerie-restauration, le POD Atelier est
+        une œuvre sur-mesure, de la première pierre à la dernière lumière.
+      </p>
+      <div class="pod-hero__actions">
+        <a href="/contact" class="btn btn-primary">Demander un devis</a>
+        <a href="/galerie" class="btn btn-outline">Voir des réalisations</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANDEAU PREMIUM -->
+  <div class="premium-band">
+    <div class="container premium-band__inner">
+      <span>✦ Intégration architecturale</span>
+      <span>✦ Équipements de chef</span>
+      <span>✦ Matières d'exception</span>
+      <span>✦ Sur-mesure absolu</span>
+    </div>
+  </div>
+
+  <!-- POINTS FORTS -->
+  <section class="pod-points">
+    <div class="container">
+      <h2 class="section-title">L'excellence à chaque détail</h2>
+      <div class="pod-points__grid">
+        {points.map(p => (
+          <div class="pod-point">
+            <div class="pod-point__dot" aria-hidden="true"></div>
+            <h3>{p.titre}</h3>
+            <p>{p.texte}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <section class="pod-gallery">
+    <div class="container">
+      <h2 class="section-title">Le POD Atelier en situation</h2>
+      <div class="pod-gallery__grid">
+        <div class="pod-gallery__main" aria-hidden="true" style="background: linear-gradient(135deg, #0D1726, #14213D)"></div>
+        <div class="pod-gallery__side">
+          <div aria-hidden="true" style="background: linear-gradient(135deg, #14213D, #1E3A6E)"></div>
+          <div aria-hidden="true" style="background: linear-gradient(135deg, #0A0F1A, #14213D)"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECS -->
+  <section class="pod-specs">
+    <div class="container pod-specs__inner">
+      <div class="pod-specs__content">
+        <h2 class="section-title">Équipements & finitions</h2>
+        <p>Le POD Atelier n'a pas de configuration standard — chaque projet est une page blanche. Les éléments ci-dessous constituent notre base de discussion lors de la première consultation.</p>
+        <ul class="specs-list">
+          {specs.map(s => (
+            <li class="specs-item">
+              <span class="specs-label">{s.label}</span>
+              <span class="specs-value">{s.value}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="pod-specs__cta-box">
+        <div class="cta-box__premium-badge" aria-hidden="true">✦ Premium</div>
+        <h3>Un projet unique, rien de moins.</h3>
+        <p>Le POD Atelier commence par une consultation approfondie avec notre équipe de design. Prenez rendez-vous pour nous parler de votre vision.</p>
+        <a href="/contact" class="btn btn-primary" style="width:100%; text-align:center;">Prendre rendez-vous</a>
+        <a href="/produits" class="pod-specs__back">← Retour au catalogue</a>
+        <div class="pod-specs__nav">
+          <div class="pod-specs__nav-row">
+            <a href="/produits/pod-signature" class="pod-specs__nav-btn-sm">← POD Signature</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .pod-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 75vh;
+  }
+
+  .pod-hero__image {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(160deg, #0A0F1A 0%, #0D1726 50%, #14213D 100%);
+  }
+
+  .pod-hero__content {
+    padding: var(--space-xl) var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-sm);
+    background-color: var(--color-bg);
+  }
+
+  .breadcrumb a {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    transition: color var(--transition);
+  }
+
+  .breadcrumb a:hover { color: var(--color-accent); }
+
+  .pod-hero__tag {
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.9rem;
+    border-radius: var(--radius-xl);
+    align-self: flex-start;
+    border: 1.5px solid var(--color-secondary);
+  }
+
+  .pod-hero__title {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    color: var(--color-primary);
+    line-height: 1.1;
+  }
+
+  .pod-hero__tagline {
+    font-style: italic;
+    color: var(--color-secondary);
+    font-size: 1.1rem;
+  }
+
+  .pod-hero__desc {
+    color: var(--color-text-light);
+    line-height: 1.75;
+    max-width: 480px;
+  }
+
+  .pod-hero__actions {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    margin-top: var(--space-xs);
+  }
+
+  .btn-outline {
+    background-color: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  .btn-outline:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+
+  /* ---- Bandeau premium ---- */
+  .premium-band {
+    background-color: var(--color-primary);
+    padding-block: 0.75rem;
+  }
+
+  .premium-band__inner {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+  }
+
+  /* ---- Points forts ---- */
+  .pod-points {
+    padding-block: var(--space-xl);
+    background-color: var(--color-white);
+  }
+
+  .pod-points__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+
+  .pod-point {
+    padding: var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+  }
+
+  .pod-point__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--color-secondary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .pod-point h3 { font-size: 1.05rem; margin-bottom: 0.5rem; color: var(--color-primary); }
+  .pod-point p { font-size: 0.9rem; color: var(--color-text-light); line-height: 1.65; }
+
+  /* ---- Galerie ---- */
+  .pod-gallery { padding-block: var(--space-xl); }
+
+  .pod-gallery__grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 420px;
+    gap: 8px;
+    margin-top: var(--space-md);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .pod-gallery__main { border-radius: var(--radius-md) 0 0 var(--radius-md); }
+  .pod-gallery__side { display: grid; grid-template-rows: 1fr 1fr; gap: 8px; }
+  .pod-gallery__side > div:last-child { border-radius: 0 0 var(--radius-md) 0; }
+
+  /* ---- Specs ---- */
+  .pod-specs { padding-block: var(--space-xl); background-color: var(--color-white); }
+
+  .pod-specs__inner {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: var(--space-lg);
+    align-items: start;
+  }
+
+  .pod-specs__content > p { color: var(--color-text-light); line-height: 1.7; margin-bottom: var(--space-md); }
+
+  .specs-list { border-top: 1px solid var(--color-border); }
+
+  .specs-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 0.9rem;
+  }
+
+  .specs-label { color: var(--color-text-light); font-weight: 500; }
+  .specs-value { font-weight: 600; color: var(--color-primary); text-align: right; max-width: 55%; }
+
+  .pod-specs__cta-box {
+    background-color: var(--color-primary);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    position: sticky;
+    top: 100px;
+  }
+
+  .cta-box__premium-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+  }
+
+  .pod-specs__cta-box h3 { font-size: 1.2rem; color: var(--color-white); }
+  .pod-specs__cta-box p { font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.6; }
+
+  .pod-specs__back {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    transition: color var(--transition);
+  }
+
+  .pod-specs__back:hover { color: var(--color-white); }
+
+  .pod-specs__nav { border-top: 1px solid rgba(255,255,255,0.15); padding-top: var(--space-sm); }
+
+  .pod-specs__nav-row { display: flex; gap: 0.5rem; }
+
+  .pod-specs__nav-btn-sm {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.7);
+    border: 1.5px solid rgba(255,255,255,0.2);
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition);
+  }
+
+  .pod-specs__nav-btn-sm:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: var(--color-white);
+  }
+
+  @media (max-width: 900px) {
+    .pod-hero { grid-template-columns: 1fr; }
+    .pod-hero__visual { height: 280px; }
+    .pod-hero__content { padding: var(--space-lg) var(--space-md); }
+    .pod-points__grid { grid-template-columns: 1fr; }
+    .pod-gallery__grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+    .pod-gallery__main { height: 260px; border-radius: var(--radius-md) var(--radius-md) 0 0; }
+    .pod-gallery__side { grid-template-columns: 1fr 1fr; grid-template-rows: 160px; }
+    .pod-specs__inner { grid-template-columns: 1fr; }
+    .pod-specs__cta-box { position: static; }
+    .premium-band__inner { gap: var(--space-sm); }
+  }
+</style>

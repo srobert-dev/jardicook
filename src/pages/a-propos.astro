@@ -1,0 +1,314 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+
+const valeurs = [
+  {
+    titre: 'Exigence',
+    texte: 'Chaque détail compte. Des matériaux aux finitions, nous ne faisons aucun compromis sur la qualité et la durabilité de nos réalisations.',
+  },
+  {
+    titre: 'Architecture',
+    texte: 'Le POD n\'est pas un équipement de jardin — c\'est un objet architectural. Nous concevons chaque installation comme une extension de votre habitat.',
+  },
+  {
+    titre: 'Sur-mesure',
+    texte: 'Il n\'existe pas deux jardins identiques, ni deux POD identiques. Chaque projet est pensé et conçu spécifiquement pour votre espace et vos usages.',
+  },
+  {
+    titre: 'Durabilité',
+    texte: 'Nos structures sont conçues pour durer des décennies. Matériaux sélectionnés, traitements renforcés, finitions pérennes : un investissement pour l\'avenir.',
+  },
+];
+---
+
+<BaseLayout
+  title="À propos — Notre histoire"
+  description="Découvrez l'histoire de Jardicook, notre vision de la cuisine extérieure et les valeurs qui guident chacune de nos réalisations."
+>
+
+  <HeroSection
+    title="Une vision,<br />une passion outdoor."
+    subtitle="Jardicook est né d'une conviction : l'espace extérieur mérite autant de soin, d'élégance et de fonctionnalité que l'intérieur. Le POD en est la manifestation."
+    ctaLabel="Découvrir le POD"
+    ctaHref="/produits"
+    tall={false}
+  />
+
+  <!-- HISTOIRE -->
+  <section class="about-story">
+    <div class="container about-story__inner">
+      <div class="about-story__content">
+        <span class="about-eyebrow">Notre histoire</span>
+        <h2 class="section-title">L'idée qui a tout changé.</h2>
+        <p>
+          Jardicook est né d'une frustration partagée par beaucoup : pourquoi les cuisines extérieures
+          disponibles sur le marché sont-elles si peu ambitieuses, si peu belles, si peu adaptées
+          à des espaces outdoor soignés ?
+        </p>
+        <p>
+          Nos fondateurs — passionnés de cuisine, de design et d'architecture — ont décidé de concevoir
+          la cuisine extérieure qu'ils auraient voulu avoir : robuste, élégante, modulaire, pensée pour
+          toutes les saisons et totalement personnalisable.
+        </p>
+        <p>
+          Le <strong>POD</strong> est le résultat de plusieurs années de R&D, de collaboration avec
+          des artisans d'excellence et de tests en conditions réelles. Aujourd'hui, chaque Jardicook
+          est fabriqué avec la même exigence, pour des clients qui partagent le même goût pour
+          les belles choses.
+        </p>
+      </div>
+      <div class="about-story__visual" aria-hidden="true">
+        <div class="about-story__image"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALEURS -->
+  <section class="about-values">
+    <div class="container">
+      <span class="about-eyebrow" style="display:block; margin-bottom:0.5rem;">Ce qui nous guide</span>
+      <h2 class="section-title">Nos valeurs</h2>
+      <div class="values-grid">
+        {valeurs.map((v, i) => (
+          <div class="value-item">
+            <span class="value-number">0{i + 1}</span>
+            <h3 class="value-title">{v.titre}</h3>
+            <p class="value-text">{v.texte}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROCHE -->
+  <section class="about-approach">
+    <div class="container about-approach__inner">
+      <div class="about-approach__visual" aria-hidden="true">
+        <div class="about-approach__image"></div>
+      </div>
+      <div class="about-approach__content">
+        <span class="about-eyebrow">Notre approche</span>
+        <h2 class="section-title">Du projet à la réalisation.</h2>
+        <div class="approach-steps">
+          <div class="approach-step">
+            <span class="approach-step__num">1</span>
+            <div>
+              <h3>Écoute & conseil</h3>
+              <p>Nous commençons par vous écouter. Votre espace, vos usages, vos envies — tout est pris en compte pour concevoir la solution la plus adaptée.</p>
+            </div>
+          </div>
+          <div class="approach-step">
+            <span class="approach-step__num">2</span>
+            <div>
+              <h3>Conception sur-mesure</h3>
+              <p>Nos équipes de design conçoivent votre POD en 3D, avec le choix des matériaux, des équipements et des finitions.</p>
+            </div>
+          </div>
+          <div class="approach-step">
+            <span class="approach-step__num">3</span>
+            <div>
+              <h3>Fabrication & installation</h3>
+              <p>Votre POD est fabriqué par nos artisans partenaires et installé par nos équipes. Nous assurons le suivi de A à Z.</p>
+            </div>
+          </div>
+        </div>
+        <a href="/contact" class="btn btn-primary" style="margin-top:var(--space-md);">
+          Démarrer mon projet
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="about-cta">
+    <div class="container about-cta__inner">
+      <h2>Prêt à transformer votre extérieur ?</h2>
+      <p>Parlons de votre projet. Notre équipe est disponible pour répondre à toutes vos questions et vous accompagner dans la conception de votre POD.</p>
+      <a href="/contact" class="btn btn-primary">Prendre contact</a>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .about-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    margin-bottom: var(--space-sm);
+  }
+
+  /* ---- Story ---- */
+  .about-story {
+    padding-block: var(--space-xl);
+    background-color: var(--color-white);
+  }
+
+  .about-story__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    align-items: center;
+  }
+
+  .about-story__content p {
+    color: var(--color-text-light);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .about-story__content strong {
+    color: var(--color-secondary);
+  }
+
+  .about-story__image {
+    aspect-ratio: 4/5;
+    background: linear-gradient(135deg, #1a1a1a, #3a3a3a);
+    border-radius: var(--radius-md);
+  }
+
+  /* ---- Values ---- */
+  .about-values {
+    padding-block: var(--space-xl);
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+
+  .value-item {
+    padding: var(--space-md);
+    border-top: 3px solid var(--color-secondary);
+    background-color: var(--color-white);
+  }
+
+  .value-number {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--color-border);
+    line-height: 1;
+    margin-bottom: var(--space-sm);
+  }
+
+  .value-title {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .value-text {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+  }
+
+  /* ---- Approach ---- */
+  .about-approach {
+    padding-block: var(--space-xl);
+    background-color: var(--color-white);
+  }
+
+  .about-approach__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    align-items: start;
+  }
+
+  .about-approach__image {
+    aspect-ratio: 4/5;
+    background: linear-gradient(135deg, #2a1a0a, #5a3a1a);
+    border-radius: var(--radius-md);
+  }
+
+  .approach-steps {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+
+  .approach-step {
+    display: flex;
+    gap: var(--space-sm);
+    align-items: flex-start;
+  }
+
+  .approach-step__num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    font-weight: 700;
+    font-size: 0.9rem;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .approach-step h3 {
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .approach-step p {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+  }
+
+  /* ---- CTA ---- */
+  .about-cta {
+    background-color: var(--color-primary);
+    padding-block: var(--space-lg);
+  }
+
+  .about-cta__inner {
+    text-align: center;
+    max-width: 640px;
+    margin-inline: auto;
+  }
+
+  .about-cta__inner h2 {
+    color: var(--color-white);
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    margin-bottom: var(--space-sm);
+  }
+
+  .about-cta__inner p {
+    color: rgba(255,255,255,0.7);
+    margin-bottom: var(--space-md);
+    line-height: 1.7;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .about-story__inner,
+    .about-approach__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .about-story__visual,
+    .about-approach__visual {
+      display: none;
+    }
+
+    .values-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .values-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

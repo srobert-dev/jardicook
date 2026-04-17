@@ -1,0 +1,225 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+
+const realisations = [
+  { title: 'Jardin privé', location: 'Bordeaux', config: 'POD Signature', category: 'Particulier' },
+  { title: 'Villa contemporaine', location: 'Côte d\'Azur', config: 'POD Atelier', category: 'Particulier' },
+  { title: 'Hôtel boutique', location: 'Luberon', config: 'POD Atelier', category: 'Professionnel' },
+  { title: 'Résidence de prestige', location: 'Saint-Tropez', config: 'POD Signature', category: 'Particulier' },
+  { title: 'Restaurant gastronomique', location: 'Lyon', config: 'POD Atelier', category: 'Professionnel' },
+  { title: 'Maison de campagne', location: 'Périgord', config: 'POD Essentiel', category: 'Particulier' },
+  { title: 'Domaine viticole', location: 'Bourgogne', config: 'POD Signature', category: 'Professionnel' },
+  { title: 'Villa urbaine', location: 'Paris 16e', config: 'POD Essentiel', category: 'Particulier' },
+  { title: 'Mas provençal', location: 'Alpilles', config: 'POD Atelier', category: 'Particulier' },
+];
+
+const categories = ['Tous', 'Particulier', 'Professionnel'];
+---
+
+<BaseLayout
+  title="Galerie — Réalisations"
+  description="Découvrez nos réalisations de cuisines extérieures POD Jardicook : jardins privés, villas, hôtels et restaurants. Chaque projet est unique et sur-mesure."
+>
+
+  <HeroSection
+    title="Nos réalisations<br />en images."
+    subtitle="Chaque POD raconte une histoire différente. Découvrez comment nos cuisines extérieures s'intègrent dans des espaces variés, du jardin privé à l'établissement hôtelier."
+    ctaLabel="Demander un devis"
+    ctaHref="/contact"
+    tall={false}
+  />
+
+  <!-- FILTRES -->
+  <section class="gallery-section">
+    <div class="container">
+      <div class="gallery-filters" role="group" aria-label="Filtrer les réalisations">
+        {categories.map(cat => (
+          <button class={`gallery-filter ${cat === 'Tous' ? 'gallery-filter--active' : ''}`} data-filter={cat}>
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      <!-- GRILLE -->
+      <div class="gallery-grid" id="gallery-grid">
+        {realisations.map((item, i) => (
+          <article class="gallery-item" data-category={item.category}>
+            <div class="gallery-item__image">
+              <div class={`gallery-item__placeholder gallery-item__placeholder--${(i % 6) + 1}`} aria-hidden="true"></div>
+              <div class="gallery-item__overlay">
+                <p class="gallery-item__config">{item.config}</p>
+                <h3 class="gallery-item__title">{item.title}</h3>
+                <p class="gallery-item__location">{item.location}</p>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <p class="gallery-notice">
+        Vous souhaitez voir votre projet dans cette galerie ?
+        <a href="/contact">Contactez-nous pour un devis.</a>
+      </p>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<script>
+  const filters = document.querySelectorAll<HTMLButtonElement>('.gallery-filter');
+  const items = document.querySelectorAll<HTMLElement>('.gallery-item');
+
+  filters.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Activer le filtre
+      filters.forEach(f => f.classList.remove('gallery-filter--active'));
+      btn.classList.add('gallery-filter--active');
+
+      const selected = btn.dataset.filter;
+
+      items.forEach(item => {
+        if (selected === 'Tous' || item.dataset.category === selected) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .gallery-section {
+    padding-block: var(--space-xl);
+  }
+
+  .gallery-filters {
+    display: flex;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+    flex-wrap: wrap;
+  }
+
+  .gallery-filter {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.5rem 1.25rem;
+    border: 1.5px solid var(--color-border);
+    background: transparent;
+    color: var(--color-text-light);
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition);
+  }
+
+  .gallery-filter:hover,
+  .gallery-filter--active {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-white);
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .gallery-item__image {
+    aspect-ratio: 4/3;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .gallery-item__placeholder {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.4s ease;
+  }
+
+  .gallery-item:hover .gallery-item__placeholder {
+    transform: scale(1.06);
+  }
+
+  .gallery-item__placeholder--1 { background: linear-gradient(135deg, #1a1a1a, #3c3c3c); }
+  .gallery-item__placeholder--2 { background: linear-gradient(135deg, #2a1a0a, #5a3a1a); }
+  .gallery-item__placeholder--3 { background: linear-gradient(135deg, #0a1a2a, #1a3a5a); }
+  .gallery-item__placeholder--4 { background: linear-gradient(135deg, #1a2a1a, #3a5a3a); }
+  .gallery-item__placeholder--5 { background: linear-gradient(135deg, #2a1a2a, #4a3a4a); }
+  .gallery-item__placeholder--6 { background: linear-gradient(135deg, #2a2a1a, #5a5a2a); }
+
+  .gallery-item__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 60%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: var(--space-sm);
+    opacity: 0;
+    transition: opacity var(--transition);
+  }
+
+  .gallery-item:hover .gallery-item__overlay {
+    opacity: 1;
+  }
+
+  .gallery-item__config {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    margin-bottom: 0.25rem;
+  }
+
+  .gallery-item__title {
+    font-size: 1.05rem;
+    color: var(--color-white);
+    margin-bottom: 0.15rem;
+  }
+
+  .gallery-item__location {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .gallery-notice {
+    margin-top: var(--space-md);
+    text-align: center;
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+  }
+
+  .gallery-notice a {
+    color: var(--color-secondary);
+    font-weight: 500;
+    transition: color var(--transition);
+  }
+
+  .gallery-notice a:hover {
+    color: #a85225;
+  }
+
+  @media (max-width: 900px) {
+    .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 500px) {
+    .gallery-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

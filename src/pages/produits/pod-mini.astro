@@ -1,0 +1,315 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const specs = [
+  { label: 'Cuisson', value: 'Plancha + brûleur gaz' },
+  { label: 'Plan de travail', value: 'Pierre naturelle' },
+  { label: 'Rangements', value: 'Armoires intégrées' },
+  { label: 'Éclairage LED', value: 'En option' },
+  { label: 'Eau courante', value: 'En option' },
+  { label: 'Cave à boissons', value: 'Non inclus' },
+  { label: 'Structure', value: 'Aluminium laqué' },
+  { label: 'Usage', value: 'Toutes saisons' },
+];
+---
+
+<BaseLayout
+  title="POD Mini — Cuisine Extérieure Compacte"
+  description="Le POD Mini de Jardicook : cuisine extérieure compacte et élégante. Format maîtrisé, cuisson performante, finitions haut de gamme."
+>
+
+  <section class="pod-hero">
+    <div class="pod-hero__image-col">
+      <img
+        src="/images/Mini pod-blanc.png"
+        alt="POD Mini — cuisine extérieure compacte Jardicook"
+        class="pod-hero__img"
+      />
+    </div>
+    <div class="pod-hero__content">
+      <nav class="breadcrumb"><a href="/produits">← Tous les POD</a></nav>
+      <span class="pod-tag">Compact</span>
+      <h1 class="pod-title">POD Mini</h1>
+      <p class="pod-tagline">L'essentiel du plein air, dans un format maîtrisé.</p>
+      <p class="pod-desc">
+        Le POD Mini est l'entrée idéale dans l'univers Jardicook. Conçu pour les terrasses et
+        jardins de taille intermédiaire, il intègre tout ce qui est nécessaire pour une cuisine
+        outdoor performante et élégante, sans jamais surcharger l'espace.
+      </p>
+      <div class="pod-actions">
+        <a href="/configurateur" class="btn btn-primary">Configurer mon POD</a>
+        <a href="/contact" class="btn btn-outline-dark">Demander un devis</a>
+        <a href="/galerie" class="btn btn-outline-dark">Voir des réalisations</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Deuxième photo (noir) -->
+  <section class="pod-variants">
+    <div class="container">
+      <h2 class="section-title">Disponible en deux finitions</h2>
+      <div class="variants-grid">
+        <div class="variant">
+          <img src="/images/Mini pod-blanc.png" alt="POD Mini finition claire" loading="lazy" />
+          <p>Finition Gris Clair</p>
+        </div>
+        <div class="variant">
+          <img src="/images/Mini pod -noir.png" alt="POD Mini finition noire" loading="lazy" />
+          <p>Finition Anthracite</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Specs + CTA sticky -->
+  <section class="pod-specs">
+    <div class="container pod-specs__inner">
+      <div>
+        <h2 class="section-title">Équipements & finitions</h2>
+        <p class="pod-specs__intro">Chaque POD Mini est configuré selon vos besoins. Les équipements listés constituent la base — tout est adaptable.</p>
+        <ul class="specs-list">
+          {specs.map(s => (
+            <li class="specs-item">
+              <span class="specs-label">{s.label}</span>
+              <span class="specs-value">{s.value}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <aside class="cta-box">
+        <h3>Démarrer votre projet</h3>
+        <p>Nos conseillers étudient gratuitement votre espace et vous proposent une configuration personnalisée sous 48h.</p>
+        <a href="/configurateur" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Configurer mon POD</a>
+        <a href="/contact" class="btn btn-outline-dark" style="width:100%;text-align:center;display:block;margin-top:0.5rem;">Demander un devis</a>
+        <div class="cta-box__nav">
+          <span>Modèle suivant</span>
+          <a href="/produits/pod-mid" class="btn-nav">POD Mid →</a>
+        </div>
+        <a href="/produits" class="cta-box__back">← Retour au catalogue</a>
+      </aside>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .pod-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 80vh;
+    background-color: var(--color-bg);
+  }
+
+  .pod-hero__image-col {
+    background-color: #f0ede6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .pod-hero__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .pod-hero__image-col:hover .pod-hero__img {
+    transform: scale(1.03);
+  }
+
+  .pod-hero__content {
+    padding: var(--space-xl) var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-sm);
+  }
+
+  .breadcrumb a {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    transition: color var(--transition);
+  }
+  .breadcrumb a:hover { color: var(--color-accent); }
+
+  .pod-tag {
+    display: inline-block;
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.9rem;
+    border-radius: var(--radius-xl);
+    align-self: flex-start;
+  }
+
+  .pod-title {
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    color: var(--color-primary);
+    line-height: 1.1;
+  }
+
+  .pod-tagline {
+    font-style: italic;
+    color: var(--color-secondary);
+    font-size: 1.1rem;
+  }
+
+  .pod-desc {
+    color: var(--color-text-light);
+    line-height: 1.75;
+    max-width: 480px;
+  }
+
+  .pod-actions {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    margin-top: var(--space-xs);
+  }
+
+  .btn-outline-dark {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    border-radius: var(--radius-xl);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    background: transparent;
+    transition: all var(--transition);
+    cursor: pointer;
+  }
+  .btn-outline-dark:hover {
+    background-color: var(--color-primary);
+    color: var(--color-chalk);
+  }
+
+  /* Variants */
+  .pod-variants {
+    padding-block: var(--space-xl);
+    background-color: var(--color-white, #fff);
+  }
+
+  .variants-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+
+  .variant {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background-color: #f0ede6;
+    box-shadow: 0 4px 20px rgba(44,32,16,0.08);
+  }
+
+  .variant img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+  }
+
+  .variant p {
+    padding: var(--space-sm) var(--space-md);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-text);
+  }
+
+  /* Specs */
+  .pod-specs {
+    padding-block: var(--space-xl);
+    background-color: var(--color-bg);
+  }
+
+  .pod-specs__inner {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: var(--space-lg);
+    align-items: start;
+  }
+
+  .pod-specs__intro {
+    color: var(--color-text-light);
+    line-height: 1.7;
+    margin-block: var(--space-sm) var(--space-md);
+  }
+
+  .specs-list { border-top: 1px solid var(--color-border); }
+
+  .specs-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 0.9rem;
+  }
+
+  .specs-label { color: var(--color-text-light); }
+  .specs-value { font-weight: 600; color: var(--color-primary); text-align: right; max-width: 55%; }
+
+  .cta-box {
+    background-color: var(--color-white, #fff);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    position: sticky;
+    top: 100px;
+    box-shadow: 0 4px 24px rgba(44,32,16,0.07);
+  }
+
+  .cta-box h3 { font-size: 1.2rem; color: var(--color-primary); }
+  .cta-box p { font-size: 0.9rem; color: var(--color-text-light); line-height: 1.6; }
+
+  .cta-box__nav {
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--space-sm);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .cta-box__nav span {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-light);
+  }
+
+  .btn-nav {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    transition: color var(--transition);
+  }
+  .btn-nav:hover { color: var(--color-primary); }
+
+  .cta-box__back {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    text-align: center;
+    transition: color var(--transition);
+  }
+  .cta-box__back:hover { color: var(--color-primary); }
+
+  @media (max-width: 900px) {
+    .pod-hero, .pod-specs__inner { grid-template-columns: 1fr; }
+    .pod-hero__image-col { height: 320px; }
+    .pod-hero__content { padding: var(--space-lg) var(--space-md); }
+    .variants-grid { grid-template-columns: 1fr; }
+    .cta-box { position: static; }
+  }
+</style>

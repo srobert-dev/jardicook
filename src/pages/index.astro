@@ -1,0 +1,418 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import ProductCard from '../components/ProductCard.astro';
+import ScrollVideo from '../components/ScrollVideo.astro';
+---
+
+<BaseLayout
+  title="Accueil"
+  description="Jardicook conçoit des cuisines extérieures architecturales haut de gamme — le POD, modulaire, robuste et élégant, pour une expérience outdoor toute l'année."
+>
+
+  <!-- HERO -->
+  <HeroSection
+    title="L'art de cuisiner<br />en plein air."
+    subtitle="Le POD est une cuisine extérieure architecturale, modulaire et rabattable, conçue pour sublimer votre espace outdoor — toute l'année, par tous les temps."
+    ctaLabel="Découvrir le POD"
+    ctaHref="/produits"
+    ctaSecondaryLabel="Demander un devis"
+    ctaSecondaryHref="/contact"
+    overlay={true}
+    tall={true}
+  />
+
+  <!-- SCROLL VIDEO — OUVERTURE DU POD -->
+  <ScrollVideo
+    src="/video/pod-opening.mp4"
+    scrollHeight={200}
+    labelBefore="L'art de cuisiner en plein air."
+    labelAfter="Une cuisine outdoor architecturale."
+  />
+
+  <!-- ACCROCHE MARQUE -->
+  <section class="brand-intro">
+    <div class="container brand-intro__inner">
+      <div class="brand-intro__text">
+        <span class="brand-intro__eyebrow">Notre philosophie</span>
+        <h2 class="section-title">Une cuisine extérieure<br />qui redéfinit l'outdoor.</h2>
+        <p>
+          Chez Jardicook, nous croyons que l'espace extérieur mérite autant de soin et d'élégance
+          que l'intérieur. Le POD est la synthèse de cette conviction : un équipement sur-mesure,
+          architectural, intégrant cuisson, eau courante, rangement et éclairage dans une
+          structure robuste et pérenne.
+        </p>
+        <p>
+          Conçu pour les particuliers exigeants, les architectes paysagistes et les établissements
+          hôteliers ou de restauration qui souhaitent élever l'expérience outdoor à son plus haut niveau.
+        </p>
+        <a href="/a-propos" class="btn btn-dark" style="margin-top:1.5rem;">Notre histoire</a>
+      </div>
+      <div class="brand-intro__visual" aria-hidden="true">
+        <div class="brand-intro__badge">
+          <span class="brand-intro__badge-number">100%</span>
+          <span class="brand-intro__badge-label">Sur-mesure</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POINTS FORTS -->
+  <section class="features">
+    <div class="container">
+      <p class="section-subtitle" style="text-align:center;">Pourquoi le POD ?</p>
+      <h2 class="section-title" style="text-align:center;">Quatre piliers d'excellence</h2>
+      <div class="features__grid">
+        <article class="feature">
+          <div class="feature__icon" aria-hidden="true">⬡</div>
+          <h3>Architecture modulaire</h3>
+          <p>Chaque POD est pensé comme un objet architectural : proportions, matériaux et finitions s'adaptent parfaitement à votre environnement.</p>
+        </article>
+        <article class="feature">
+          <div class="feature__icon" aria-hidden="true">◈</div>
+          <h3>Toutes saisons</h3>
+          <p>Structure rabattable et matériaux traités pour résister aux intempéries. Votre cuisine extérieure reste opérationnelle même en hiver.</p>
+        </article>
+        <article class="feature">
+          <div class="feature__icon" aria-hidden="true">◎</div>
+          <h3>Tout-en-un intégré</h3>
+          <p>Cuisson, eau courante, rangement, éclairage : tout est pensé et intégré pour une utilisation intuitive et un rendu impeccable.</p>
+        </article>
+        <article class="feature">
+          <div class="feature__icon" aria-hidden="true">◇</div>
+          <h3>Sur-mesure absolu</h3>
+          <p>Dimensions, équipements, finitions et matériaux sont entièrement personnalisables selon votre projet et vos exigences.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUITS SÉLECTION -->
+  <section class="products-highlight">
+    <div class="container">
+      <p class="section-subtitle">Nos configurations</p>
+      <h2 class="section-title">Trois POD, une exigence commune</h2>
+      <div class="products-highlight__grid">
+        <ProductCard
+          name="POD Mini"
+          description="Format compact, cuisson performante, finitions haut de gamme. L'entrée idéale dans l'univers Jardicook."
+          image="/images/Mini pod-blanc.png"
+          tag="Compact"
+          href="/produits/pod-mini"
+        />
+        <ProductCard
+          name="POD Mid"
+          description="Grill gaz 6 feux, eau courante, cave réfrigérée, hotte et TV intégrés. La cuisine outdoor complète."
+          image="/images/mid pod blanc.png"
+          tag="Polyvalent"
+          href="/produits/pod-mid"
+        />
+        <ProductCard
+          name="POD Big"
+          description="Façades bois, plancha pro, kamado, éclairage architectural. La version ultime pour les passionnés."
+          image="/images/big pod config 1 .png"
+          tag="Premium"
+          href="/produits/pod-big"
+        />
+      </div>
+      <div style="text-align:center; margin-top:var(--space-md);">
+        <a href="/produits" class="btn btn-primary">Voir toutes les configurations</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA INTERMÉDIAIRE -->
+  <section class="cta-band">
+    <div class="container cta-band__inner">
+      <div class="cta-band__text">
+        <h2>Votre projet outdoor commence ici.</h2>
+        <p>Discutons ensemble de votre espace, de vos usages et de vos envies. Chaque POD est unique, comme votre projet.</p>
+      </div>
+      <a href="/contact" class="btn btn-primary">Demander un devis gratuit</a>
+    </div>
+  </section>
+
+  <!-- GALERIE TEASER -->
+  <section class="gallery-teaser">
+    <div class="container">
+      <p class="section-subtitle">Réalisations</p>
+      <h2 class="section-title">Quelques POD en situation</h2>
+      <div class="gallery-teaser__grid">
+        <a href="/galerie" class="gallery-teaser__item gallery-teaser__item--large" aria-label="Voir la galerie">
+          <div class="gallery-teaser__placeholder gallery-teaser__placeholder--1" aria-hidden="true"></div>
+          <span class="gallery-teaser__overlay-text">Jardin privé, Bordeaux</span>
+        </a>
+        <a href="/galerie" class="gallery-teaser__item" aria-label="Voir la galerie">
+          <div class="gallery-teaser__placeholder gallery-teaser__placeholder--2" aria-hidden="true"></div>
+          <span class="gallery-teaser__overlay-text">Villa contemporaine, Côte d'Azur</span>
+        </a>
+        <a href="/galerie" class="gallery-teaser__item" aria-label="Voir la galerie">
+          <div class="gallery-teaser__placeholder gallery-teaser__placeholder--3" aria-hidden="true"></div>
+          <span class="gallery-teaser__overlay-text">Hôtel boutique, Luberon</span>
+        </a>
+      </div>
+      <div style="text-align:center; margin-top:var(--space-md);">
+        <a href="/galerie" class="btn btn-dark">Explorer la galerie</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* ---- Brand intro ---- */
+  .brand-intro {
+    padding-block: var(--space-xl);
+  }
+
+  .brand-intro__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    align-items: center;
+  }
+
+  .brand-intro__eyebrow {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .brand-intro__text p {
+    margin-top: 1rem;
+    color: var(--color-text-light);
+    line-height: 1.75;
+  }
+
+  .brand-intro__visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .brand-intro__badge {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 3px solid var(--color-secondary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .brand-intro__badge-number {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    color: var(--color-secondary);
+    line-height: 1;
+  }
+
+  .brand-intro__badge-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text-light);
+    margin-top: 0.25rem;
+  }
+
+  /* ---- Features ---- */
+  .features {
+    padding-block: var(--space-xl);
+    background-color: var(--color-white);
+  }
+
+  .features__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+
+  .feature {
+    padding: var(--space-md);
+    border-left: 3px solid var(--color-border);
+    transition: border-color var(--transition);
+  }
+
+  .feature:hover {
+    border-left-color: var(--color-secondary);
+  }
+
+  .feature__icon {
+    font-size: 1.8rem;
+    color: var(--color-secondary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .feature h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .feature p {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+  }
+
+  /* ---- Products highlight ---- */
+  .products-highlight {
+    padding-block: var(--space-xl);
+  }
+
+  .products-highlight__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+
+  /* ---- CTA band ---- */
+  .cta-band {
+    background-color: var(--color-primary);
+    padding-block: var(--space-lg);
+  }
+
+  .cta-band__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+
+  .cta-band__text h2 {
+    color: var(--color-white);
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    margin-bottom: 0.5rem;
+  }
+
+  .cta-band__text p {
+    color: rgba(255,255,255,0.7);
+    max-width: 560px;
+  }
+
+  /* ---- Gallery teaser ---- */
+  .gallery-teaser {
+    padding-block: var(--space-xl);
+  }
+
+  .gallery-teaser__grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 320px;
+    gap: 6px;
+    margin-top: var(--space-md);
+  }
+
+  .gallery-teaser__item {
+    position: relative;
+    overflow: hidden;
+    display: block;
+  }
+
+  .gallery-teaser__item:hover .gallery-teaser__overlay-text {
+    opacity: 1;
+  }
+
+  .gallery-teaser__placeholder {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.4s ease;
+  }
+
+  .gallery-teaser__item:hover .gallery-teaser__placeholder {
+    transform: scale(1.04);
+  }
+
+  .gallery-teaser__placeholder--1 {
+    background: linear-gradient(135deg, #1a1a1a 0%, #3a3a3a 100%);
+  }
+  .gallery-teaser__placeholder--2 {
+    background: linear-gradient(135deg, #2a2a1a 0%, #4a4a2a 100%);
+  }
+  .gallery-teaser__placeholder--3 {
+    background: linear-gradient(135deg, #1a2a2a 0%, #2a4a4a 100%);
+  }
+
+  .gallery-teaser__overlay-text {
+    position: absolute;
+    bottom: var(--space-sm);
+    left: var(--space-sm);
+    color: var(--color-white);
+    font-size: 0.85rem;
+    font-weight: 500;
+    background-color: rgba(0,0,0,0.5);
+    padding: 0.3rem 0.7rem;
+    opacity: 0;
+    transition: opacity var(--transition);
+    border-radius: var(--radius-md);
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .features__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery-teaser__grid {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+    }
+
+    .gallery-teaser__item--large {
+      grid-column: 1 / -1;
+      height: 240px;
+    }
+
+    .gallery-teaser__item {
+      height: 200px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .brand-intro__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .brand-intro__visual {
+      display: none;
+    }
+
+    .products-highlight__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-band__inner {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .cta-band__text p {
+      margin-inline: auto;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .features__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .gallery-teaser__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .gallery-teaser__item,
+    .gallery-teaser__item--large {
+      height: 200px;
+      grid-column: auto;
+    }
+  }
+</style>

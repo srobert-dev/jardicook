@@ -1,0 +1,1142 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Configurateur POD — Jardicook"
+  description="Configurez votre cuisine extérieure POD Jardicook en 4 étapes : modèle, finition, plan de travail, équipements."
+>
+
+<div class="config-page">
+  <div class="config-layout">
+
+    <!-- ── PREVIEW sticky ── -->
+    <aside class="config-preview">
+      <div class="config-preview__image-wrap">
+        <img id="preview-img" src="/images/Mini pod-blanc.png" alt="Aperçu de votre POD" />
+        <div class="config-preview__badge" id="preview-badge">POD Mini</div>
+      </div>
+
+      <div class="config-steps-indicator">
+        <div class="steps-track">
+          <div class="steps-fill" id="steps-fill"></div>
+        </div>
+        <div class="steps-labels">
+          {['Modèle','Finition','Options','Récap'].map((l,i) => (
+            <button class={`step-dot ${i===0?'step-dot--active':''}`} data-step={i+1}>{l}</button>
+          ))}
+        </div>
+      </div>
+
+      <div class="config-preview__summary">
+        <p class="summary-title">VOTRE CONFIGURATION</p>
+        <ul class="summary-list" id="summary-list">
+          <li><span>Modèle</span><strong id="s-model">POD Mini</strong></li>
+          <li><span>Structure</span><strong id="s-finish">—</strong></li>
+          <li><span>Panneaux</span><strong id="s-door">—</strong></li>
+          <li><span>Motif</span><strong id="s-motif">—</strong></li>
+          <li><span>Plan de travail</span><strong id="s-counter">—</strong></li>
+          <li><span>Options</span><strong id="s-options">—</strong></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- ── STEPS ── -->
+    <div class="config-steps">
+
+      <!-- ══ ÉTAPE 1 : MODÈLE ══ -->
+      <section class="step-panel step-panel--active" id="step-1">
+        <header class="step-header">
+          <span class="step-num">01</span>
+          <div>
+            <h2>Choisissez votre modèle</h2>
+            <p>Trois tailles, une même exigence Jardicook.</p>
+          </div>
+        </header>
+
+        <div class="model-cards">
+
+          <button class="model-card model-card--active" data-model="mini" data-label="POD Mini">
+            <div class="model-card__img-wrap">
+              <img src="/images/Mini pod-blanc.png" alt="POD Mini" />
+            </div>
+            <div class="model-card__body">
+              <div>
+                <span class="model-card__tag">Compact</span>
+                <h3>POD Mini</h3>
+                <p>La version compacte, idéale pour les terrasses et balcons. Cuisson performante, finitions haut de gamme.</p>
+              </div>
+              <ul class="model-card__specs">
+                <li>Largeur : 120 cm</li>
+                <li>Plancha & plaque induction</li>
+                <li>Rangements intégrés</li>
+              </ul>
+            </div>
+            <div class="model-card__check" aria-hidden="true"></div>
+          </button>
+
+          <button class="model-card" data-model="mid" data-label="POD Mid">
+            <div class="model-card__img-wrap">
+              <img src="/images/mid pod blanc.png" alt="POD Mid" />
+            </div>
+            <div class="model-card__body">
+              <div>
+                <span class="model-card__tag">Polyvalent</span>
+                <h3>POD Mid</h3>
+                <p>La cuisine outdoor complète : grill gaz 6 feux, eau courante, cave réfrigérée, TV intégrée.</p>
+              </div>
+              <ul class="model-card__specs">
+                <li>Largeur : 180 cm</li>
+                <li>Grill gaz 6 feux · Eau courante</li>
+                <li>Cave réfrigérée · TV intégrée</li>
+              </ul>
+            </div>
+            <div class="model-card__check" aria-hidden="true"></div>
+          </button>
+
+          <button class="model-card" data-model="big" data-label="POD Big">
+            <div class="model-card__img-wrap">
+              <img src="/images/big pod config 1 .png" alt="POD Big" />
+            </div>
+            <div class="model-card__body">
+              <div>
+                <span class="model-card__tag model-card__tag--premium">Premium</span>
+                <h3>POD Big</h3>
+                <p>La version ultime : façades bois massif, kamado, plancha pro, éclairage architectural sur-mesure.</p>
+              </div>
+              <ul class="model-card__specs">
+                <li>Largeur : 240 cm</li>
+                <li>Kamado · Four à pizza · Fumoir</li>
+                <li>Éclairage architectural</li>
+              </ul>
+            </div>
+            <div class="model-card__check" aria-hidden="true"></div>
+          </button>
+
+        </div>
+
+        <div class="step-nav step-nav--right">
+          <button class="btn btn-primary btn-next" data-next="2">Choisir la finition →</button>
+        </div>
+      </section>
+
+      <!-- ══ ÉTAPE 2 : FINITION ══ -->
+      <section class="step-panel" id="step-2">
+        <header class="step-header">
+          <span class="step-num">02</span>
+          <div>
+            <h2>Finition & matériaux</h2>
+            <p>Personnalisez les couleurs et matériaux de votre POD.</p>
+          </div>
+        </header>
+
+        <!-- Couleur de structure -->
+        <div class="option-group">
+          <h3 class="option-group__title">Couleur de structure</h3>
+          <div class="option-cards option-cards--finish">
+            <button class="option-card option-card--active" data-type="finish" data-value="blanc" data-label="Blanc Sable" data-img-mini="/images/Mini pod-blanc.png" data-img-mid="/images/mid pod blanc.png" data-img-big="/images/big pod config 1 .png">
+              <div class="swatch" style="background:#F0EDE6;border:2px solid #ccc;"></div>
+              <span class="option-card__label">Blanc Sable</span>
+            </button>
+            <button class="option-card" data-type="finish" data-value="noir" data-label="Anthracite" data-img-mini="/images/Mini pod -noir.png" data-img-mid="/images/mid pod noir.png" data-img-big="/images/big pod config 1 .png">
+              <div class="swatch" style="background:#2A2A2A;"></div>
+              <span class="option-card__label">Anthracite</span>
+            </button>
+            <button class="option-card option-card--soon" data-type="finish" data-value="vert" data-label="Vert Forêt" disabled>
+              <div class="swatch" style="background:#3B5E45;"></div>
+              <span class="option-card__label">Vert Forêt</span>
+              <span class="soon-badge">Bientôt</span>
+            </button>
+            <button class="option-card option-card--soon" data-type="finish" data-value="brun" data-label="Brun Tabac" disabled>
+              <div class="swatch" style="background:#7B5230;"></div>
+              <span class="option-card__label">Brun Tabac</span>
+              <span class="soon-badge">Bientôt</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Panneaux de porte -->
+        <div class="option-group">
+          <h3 class="option-group__title">Couleur des panneaux de porte</h3>
+          <p class="option-group__desc">Revêtement thermolaqué haute résistance UV et intempéries.</p>
+          <div class="option-cards option-cards--finish">
+            <button class="option-card option-card--active" data-type="door" data-value="fleur" data-label="Fleur de Cerisier">
+              <div class="swatch" style="background:#E8C4C0;"></div>
+              <span class="option-card__label">Fleur de Cerisier</span>
+            </button>
+            <button class="option-card" data-type="door" data-value="noyer" data-label="Noyer Noir">
+              <div class="swatch" style="background:#2C1A0E;"></div>
+              <span class="option-card__label">Noyer Noir</span>
+            </button>
+            <button class="option-card" data-type="door" data-value="kaki" data-label="Bois Kaki">
+              <div class="swatch" style="background:#8C7B5A;"></div>
+              <span class="option-card__label">Bois Kaki</span>
+            </button>
+            <button class="option-card" data-type="door" data-value="camel" data-label="Gris Camel">
+              <div class="swatch" style="background:#A89880;"></div>
+              <span class="option-card__label">Gris Camel</span>
+            </button>
+            <button class="option-card" data-type="door" data-value="ardoise" data-label="Ardoise Bleue">
+              <div class="swatch" style="background:#4A5568;"></div>
+              <span class="option-card__label">Ardoise Bleue</span>
+            </button>
+            <button class="option-card" data-type="door" data-value="sable" data-label="Sable Chaud">
+              <div class="swatch" style="background:#C4A882;"></div>
+              <span class="option-card__label">Sable Chaud</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Motif de façade -->
+        <div class="option-group">
+          <h3 class="option-group__title">Motif de façade</h3>
+          <p class="option-group__desc">Impression transfert haute définition — imitation matières naturelles.</p>
+          <div class="option-cards option-cards--motif">
+            <button class="option-card option-card--active" data-type="motif" data-value="uni" data-label="Uni">
+              <div class="motif-swatch" style="background:#e8e4dc;"></div>
+              <span class="option-card__label">Uni</span>
+              <span class="option-card__sub">Sans motif</span>
+            </button>
+            <button class="option-card" data-type="motif" data-value="teak" data-label="Teak naturel">
+              <div class="motif-swatch" style="background:repeating-linear-gradient(90deg,#8B6F47 0px,#A68555 4px,#7A5F38 8px,#9A7848 12px);"></div>
+              <span class="option-card__label">Teak naturel</span>
+              <span class="option-card__sub">Bois exotique</span>
+            </button>
+            <button class="option-card" data-type="motif" data-value="chene" data-label="Chêne cérusé">
+              <div class="motif-swatch" style="background:repeating-linear-gradient(88deg,#D4C4A8 0px,#C8B898 3px,#DDD0BC 6px,#C0A880 9px);"></div>
+              <span class="option-card__label">Chêne cérusé</span>
+              <span class="option-card__sub">Bois clair</span>
+            </button>
+            <button class="option-card" data-type="motif" data-value="pierre" data-label="Pierre calcaire">
+              <div class="motif-swatch" style="background:radial-gradient(ellipse at 20% 30%,#d0c4b0,#c0b0a0 40%,#d8ccb8 70%,#c8baa8);"></div>
+              <span class="option-card__label">Pierre calcaire</span>
+              <span class="option-card__sub">Minéral</span>
+            </button>
+            <button class="option-card" data-type="motif" data-value="ardoise-m" data-label="Ardoise grise">
+              <div class="motif-swatch" style="background:repeating-linear-gradient(105deg,#5a5a5a 0px,#4a4a4a 2px,#606060 4px,#505050 6px);"></div>
+              <span class="option-card__label">Ardoise grise</span>
+              <span class="option-card__sub">Minéral</span>
+            </button>
+            <button class="option-card" data-type="motif" data-value="beton-m" data-label="Béton brut">
+              <div class="motif-swatch" style="background:radial-gradient(ellipse at 40% 60%,#888,#777 30%,#999 60%,#808080);"></div>
+              <span class="option-card__label">Béton brut</span>
+              <span class="option-card__sub">Industriel</span>
+            </button>
+            <button class="option-card" data-type="motif" data-value="bambou" data-label="Bambou tressé">
+              <div class="motif-swatch" style="background:repeating-linear-gradient(0deg,#9B8B6A 0px,#8A7A5A 3px,#A89870 6px,#907860 9px);"></div>
+              <span class="option-card__label">Bambou tressé</span>
+              <span class="option-card__sub">Nature</span>
+            </button>
+            <button class="option-card" data-type="motif" data-value="marbre" data-label="Marbre blanc">
+              <div class="motif-swatch" style="background:linear-gradient(120deg,#f5f5f5,#e8e8e8 20%,#d0cfc9 35%,#eeeee8 50%,#e0dfd8 65%,#f0f0ec 80%,#e8e8e4);"></div>
+              <span class="option-card__label">Marbre blanc</span>
+              <span class="option-card__sub">Élégant</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Plan de travail -->
+        <div class="option-group">
+          <h3 class="option-group__title">Plan de travail</h3>
+          <div class="option-cards option-cards--motif">
+            <button class="option-card option-card--active" data-type="counter" data-value="granit" data-label="Granit Noir">
+              <div class="motif-swatch" style="background:linear-gradient(135deg,#1a1a1a,#333,#1a1a1a);"></div>
+              <span class="option-card__label">Granit Noir</span>
+              <span class="option-card__sub">Pierre naturelle</span>
+            </button>
+            <button class="option-card" data-type="counter" data-value="calcaire" data-label="Pierre Calcaire">
+              <div class="motif-swatch" style="background:linear-gradient(135deg,#c8b89a,#e0d0b8,#c8b89a);"></div>
+              <span class="option-card__label">Pierre Calcaire</span>
+              <span class="option-card__sub">Ton chaud</span>
+            </button>
+            <button class="option-card" data-type="counter" data-value="inox" data-label="Inox Brossé">
+              <div class="motif-swatch" style="background:linear-gradient(135deg,#9a9a9a,#d0d0d0,#9a9a9a);"></div>
+              <span class="option-card__label">Inox Brossé</span>
+              <span class="option-card__sub">Professionnel</span>
+            </button>
+            <button class="option-card" data-type="counter" data-value="beton" data-label="Béton Ciré">
+              <div class="motif-swatch" style="background:linear-gradient(135deg,#7a7a7a,#a0a0a0,#7a7a7a);"></div>
+              <span class="option-card__label">Béton Ciré</span>
+              <span class="option-card__sub">Design urbain</span>
+            </button>
+            <button class="option-card" data-type="counter" data-value="quartz" data-label="Quartz Blanc">
+              <div class="motif-swatch" style="background:linear-gradient(135deg,#e8e4dc,#f5f2ec,#e8e4dc);border:1px solid #ddd;"></div>
+              <span class="option-card__label">Quartz Blanc</span>
+              <span class="option-card__sub">Épuré</span>
+            </button>
+            <button class="option-card" data-type="counter" data-value="teak-s" data-label="Teak Stone">
+              <div class="motif-swatch" style="background:linear-gradient(135deg,#8B6F47,#A68555,#8B6F47);"></div>
+              <span class="option-card__label">Teak Stone</span>
+              <span class="option-card__sub">Chaleur boisée</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="step-nav">
+          <button class="btn btn-dark btn-prev" data-prev="1">← Retour</button>
+          <button class="btn btn-primary btn-next" data-next="3">Choisir les options →</button>
+        </div>
+      </section>
+
+      <!-- ══ ÉTAPE 3 : OPTIONS ══ -->
+      <section class="step-panel" id="step-3">
+        <header class="step-header">
+          <span class="step-num">03</span>
+          <div>
+            <h2>Équipements</h2>
+            <p>Les options grisées ne sont pas disponibles sur le modèle sélectionné.</p>
+          </div>
+        </header>
+
+        <div class="option-group">
+          <h3 class="option-group__title">Cuisson</h3>
+          <div class="option-cards option-cards--equip">
+            <button class="option-card option-card--toggle" data-option="plancha" data-label="Plancha Pro" data-models="mini,mid,big">
+              <span class="option-card__label">Plancha Pro</span>
+              <span class="option-card__sub">Tous modèles</span>
+              <span class="toggle-check"></span>
+            </button>
+            <button class="option-card option-card--toggle" data-option="gaz6" data-label="Grill gaz 6 feux" data-models="mid,big">
+              <span class="option-card__label">Grill gaz 6 feux</span>
+              <span class="option-card__sub">Mid & Big</span>
+              <span class="toggle-check"></span>
+            </button>
+            <button class="option-card option-card--toggle" data-option="induction" data-label="Plaque induction" data-models="mini,mid,big">
+              <span class="option-card__label">Plaque induction</span>
+              <span class="option-card__sub">Tous modèles</span>
+              <span class="toggle-check"></span>
+            </button>
+            <button class="option-card option-card--toggle" data-option="pizza" data-label="Four à pizza" data-models="mid,big">
+              <span class="option-card__label">Four à pizza</span>
+              <span class="option-card__sub">Mid & Big</span>
+              <span class="toggle-check"></span>
+            </button>
+            <button class="option-card option-card--toggle" data-option="kamado" data-label="Kamado céramique" data-models="big">
+              <span class="option-card__label">Kamado céramique</span>
+              <span class="option-card__sub">Big uniquement</span>
+              <span class="toggle-check"></span>
+            </button>
+            <button class="option-card option-card--toggle" data-option="fumoir" data-label="Fumoir intégré" data-models="big">
+              <span class="option-card__label">Fumoir intégré</span>
+              <span class="option-card__sub">Big uniquement</span>
+              <span class="toggle-check"></span>
+            </button>
+          </div>
+        </div>
+
+        <div class="option-group">
+          <h3 class="option-group__title">Confort & ambiance</h3>
+          <div class="option-cards option-cards--equip">
+            <button class="option-card option-card--toggle" data-option="eau" data-label="Eau courante + évier" data-models="mini,mid,big">
+              <span class="option-card__label">Eau + évier</span>
+              <span class="option-card__sub">Tous modèles</span>
+              <span class="toggle-check"></span>
+            </button>
+            <button class="option-card option-card--toggle" data-option="frigo" data-label="Réfrigérateur encastré" data-models="mini,mid,big">
+              <span class="option-card__label">Réfrigérateur</span>
+              <span class="option-card__sub">Tous modèles</span>
+              <span class="toggle-check"></span>
+            </button>
+            <button class="option-card option-card--toggle" data-option="cave" data-label="Cave réfrigérée" data-models="mid,big">
+              <span class="option-card__label">Cave réfrigérée</span>
+              <span class="option-card__sub">Mid & Big</span>
+              <span class="toggle-check"></span>
+            </button>
+            <button class="option-card option-card--toggle" data-option="hotte" data-label="Hotte aspirante" data-models="mini,mid,big">
+              <span class="option-card__label">Hotte aspirante</span>
+              <span class="option-card__sub">Tous modèles</span>
+              <span class="toggle-check"></span>
+            </button>
+            <button class="option-card option-card--toggle" data-option="lumiere" data-label="Éclairage architectural" data-models="mini,mid,big">
+              <span class="option-card__label">Éclairage LED</span>
+              <span class="option-card__sub">Tous modèles</span>
+              <span class="toggle-check"></span>
+            </button>
+            <button class="option-card option-card--toggle" data-option="chauffage" data-label="Chauffage infrarouge" data-models="mini,mid,big">
+              <span class="option-card__label">Chauffage IR</span>
+              <span class="option-card__sub">Toute saison</span>
+              <span class="toggle-check"></span>
+            </button>
+            <button class="option-card option-card--toggle" data-option="tv" data-label="TV extérieure" data-models="mid,big">
+              <span class="option-card__label">TV extérieure</span>
+              <span class="option-card__sub">Mid & Big</span>
+              <span class="toggle-check"></span>
+            </button>
+            <button class="option-card option-card--toggle" data-option="son" data-label="Système audio" data-models="mid,big">
+              <span class="option-card__label">Système audio</span>
+              <span class="option-card__sub">Mid & Big</span>
+              <span class="toggle-check"></span>
+            </button>
+          </div>
+        </div>
+
+        <div class="step-nav">
+          <button class="btn btn-dark btn-prev" data-prev="2">← Retour</button>
+          <button class="btn btn-primary btn-next" data-next="4">Voir le récapitulatif →</button>
+        </div>
+      </section>
+
+      <!-- ══ ÉTAPE 4 : RÉCAP ══ -->
+      <section class="step-panel" id="step-4">
+        <header class="step-header">
+          <span class="step-num">04</span>
+          <div>
+            <h2>Votre récapitulatif</h2>
+            <p>Vérifiez votre configuration et envoyez-nous votre demande de devis.</p>
+          </div>
+        </header>
+
+        <div class="recap-grid">
+
+          <!-- Colonne gauche : configuration -->
+          <div class="recap-box" id="recap-content"></div>
+
+          <!-- Colonne droite : formulaire -->
+          <div class="recap-form">
+            <div class="recap-form__head">
+              <p class="recap-form__eyebrow">Devis gratuit</p>
+              <h3 class="recap-form__title">Recevoir mon devis</h3>
+              <p class="recap-form__sub">Réponse personnalisée sous 48h — sans engagement.</p>
+            </div>
+            <form id="devis-form" class="form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="f-prenom">Prénom</label>
+                  <input type="text" id="f-prenom" name="prenom" required placeholder="Jean" />
+                </div>
+                <div class="form-group">
+                  <label for="f-nom">Nom</label>
+                  <input type="text" id="f-nom" name="nom" required placeholder="Dupont" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="f-email">Email</label>
+                <input type="email" id="f-email" name="email" required placeholder="jean@exemple.fr" />
+              </div>
+              <div class="form-group">
+                <label for="f-tel">Téléphone</label>
+                <input type="tel" id="f-tel" name="tel" placeholder="+33 6 00 00 00 00" />
+              </div>
+              <div class="form-group">
+                <label for="f-message">Précisions sur votre projet</label>
+                <textarea id="f-message" name="message" rows="4" placeholder="Surface de votre terrasse, délai souhaité, questions..."></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary recap-form__submit">Envoyer ma demande →</button>
+              <p class="recap-form__trust">Vos données restent confidentielles et ne sont jamais revendues.</p>
+            </form>
+            <div class="form-confirm" id="form-confirm" hidden>
+              <div class="confirm-icon">✓</div>
+              <h3>Demande envoyée !</h3>
+              <p>Nous vous recontactons sous 48h avec votre devis personnalisé.</p>
+              <a href="/" class="btn btn-dark" style="margin-top:1.5rem;">Retour à l'accueil</a>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="step-nav step-nav--left">
+          <button class="btn btn-dark btn-prev" data-prev="3">← Modifier les options</button>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+</BaseLayout>
+
+<script>
+  const state = {
+    model:'mini', modelLabel:'POD Mini',
+    finish:'blanc', finishLabel:'Blanc Sable',
+    door:'fleur',   doorLabel:'Fleur de Cerisier',
+    motif:'uni',    motifLabel:'Uni',
+    counter:'granit',counterLabel:'Granit Noir',
+    options:[] as string[],
+    step:1,
+  };
+
+  const IMAGES: Record<string,Record<string,string>> = {
+    mini:{ blanc:'/images/Mini pod-blanc.png',    noir:'/images/Mini pod -noir.png' },
+    mid: { blanc:'/images/mid pod blanc.png',     noir:'/images/mid pod noir.png'   },
+    big: { blanc:'/images/big pod config 1 .png', noir:'/images/big pod config 1 .png' },
+  };
+
+  // Options incluses par modèle
+  const INCLUDED: Record<string,string[]> = {
+    mini: ['plancha','eau','lumiere','hotte'],
+    mid:  ['plancha','gaz6','eau','frigo','cave','hotte','lumiere','tv'],
+    big:  ['plancha','gaz6','kamado','pizza','fumoir','eau','frigo','cave','hotte','lumiere','tv','son','chauffage'],
+  };
+
+  const previewImg  = document.getElementById('preview-img')   as HTMLImageElement;
+  const previewBadge= document.getElementById('preview-badge') as HTMLElement;
+  const stepsFill   = document.getElementById('steps-fill')    as HTMLElement;
+  const sModel   = document.getElementById('s-model')   as HTMLElement;
+  const sFinish  = document.getElementById('s-finish')  as HTMLElement;
+  const sDoor    = document.getElementById('s-door')    as HTMLElement;
+  const sMotif   = document.getElementById('s-motif')   as HTMLElement;
+  const sCounter = document.getElementById('s-counter') as HTMLElement;
+  const sOptions = document.getElementById('s-options') as HTMLElement;
+  const stepDots = document.querySelectorAll<HTMLElement>('.step-dot');
+
+  function setPreview(model:string, finish:string) {
+    const src = IMAGES[model]?.[finish] ?? IMAGES[model]?.blanc;
+    if(src && !previewImg.src.endsWith(encodeURI(src))) {
+      previewImg.style.opacity = '0';
+      setTimeout(()=>{ previewImg.src = src; previewImg.style.opacity = '1'; }, 180);
+    }
+  }
+
+  function updateSummary() {
+    previewBadge.textContent = state.modelLabel;
+    sModel.textContent   = state.modelLabel;
+    sFinish.textContent  = state.finishLabel  || '—';
+    sDoor.textContent    = state.doorLabel    || '—';
+    sMotif.textContent   = state.motifLabel   || '—';
+    sCounter.textContent = state.counterLabel || '—';
+    sOptions.textContent = state.options.length ? state.options.join(', ') : '—';
+  }
+
+  function goToStep(n:number) {
+    document.querySelectorAll('.step-panel').forEach(p=>p.classList.remove('step-panel--active'));
+    document.getElementById(`step-${n}`)?.classList.add('step-panel--active');
+    state.step = n;
+    stepsFill.style.width = `${((n-1)/3)*100}%`;
+    stepDots.forEach((d,i)=>d.classList.toggle('step-dot--active', i<n));
+    if(n===4) buildRecap();
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  document.querySelectorAll<HTMLButtonElement>('.btn-next').forEach(b=>b.addEventListener('click',()=>goToStep(+b.dataset.next!)));
+  document.querySelectorAll<HTMLButtonElement>('.btn-prev').forEach(b=>b.addEventListener('click',()=>goToStep(+b.dataset.prev!)));
+  stepDots.forEach(d=>d.addEventListener('click',()=>goToStep(+d.dataset.step!)));
+
+  // Modèles
+  document.querySelectorAll<HTMLButtonElement>('.model-card').forEach(c=>{
+    c.addEventListener('click',()=>{
+      document.querySelectorAll('.model-card').forEach(x=>x.classList.remove('model-card--active'));
+      c.classList.add('model-card--active');
+      state.model = c.dataset.model!; state.modelLabel = c.dataset.label!;
+      setPreview(state.model, state.finish);
+      refreshCompat();
+      updateSummary();
+    });
+  });
+
+  // Swatches génériques
+  function bindSwatches(type:string, key:string, labelKey:string) {
+    document.querySelectorAll<HTMLButtonElement>(`[data-type="${type}"]`).forEach(c=>{
+      c.addEventListener('click',()=>{
+        if(c.disabled) return;
+        document.querySelectorAll(`[data-type="${type}"]`).forEach(x=>x.classList.remove('option-card--active'));
+        c.classList.add('option-card--active');
+        (state as any)[key] = c.dataset.value!;
+        (state as any)[labelKey] = c.dataset.label!;
+        if(type==='finish') setPreview(state.model, state.finish);
+        updateSummary();
+      });
+    });
+  }
+
+  bindSwatches('finish','finish','finishLabel');
+  bindSwatches('door','door','doorLabel');
+  bindSwatches('motif','motif','motifLabel');
+  bindSwatches('counter','counter','counterLabel');
+
+  // Options toggle
+  document.querySelectorAll<HTMLButtonElement>('.option-card--toggle').forEach(c=>{
+    c.addEventListener('click',()=>{
+      if(c.disabled || c.dataset.included==='true') return;
+      const lbl = c.dataset.label!;
+      c.classList.toggle('option-card--selected');
+      state.options = c.classList.contains('option-card--selected')
+        ? [...state.options, lbl]
+        : state.options.filter(o=>o!==lbl);
+      updateSummary();
+    });
+  });
+
+  function refreshCompat() {
+    const included = INCLUDED[state.model] ?? [];
+    state.options = [];
+    document.querySelectorAll<HTMLButtonElement>('.option-card--toggle').forEach(c=>{
+      const opt    = c.dataset.option!;
+      const models = (c.dataset.models??'').split(',');
+      const ok     = models.includes(state.model);
+      const isIncl = included.includes(opt);
+      c.disabled = !ok;
+      c.classList.toggle('option-card--disabled', !ok);
+      c.dataset.included = String(isIncl && ok);
+      if(ok && isIncl) {
+        c.classList.add('option-card--selected','option-card--included');
+        state.options.push(c.dataset.label!);
+      } else {
+        c.classList.remove('option-card--selected','option-card--included');
+      }
+    });
+  }
+
+  function buildRecap() {
+    const box = document.getElementById('recap-content')!;
+
+    const cuissonLabels = ['Plancha Pro','Grill gaz 6 feux','Plaque induction','Four à pizza','Kamado céramique','Fumoir intégré'];
+    const confortLabels  = ['Eau courante + évier','Réfrigérateur encastré','Cave réfrigérée','Hotte aspirante','Éclairage architectural','Chauffage infrarouge','TV extérieure','Système audio'];
+
+    const selectedCuisson = state.options.filter(o => cuissonLabels.includes(o));
+    const selectedConfort  = state.options.filter(o => confortLabels.includes(o));
+
+    const makeChips = (arr: string[], empty = 'Aucune option') => arr.length
+      ? arr.map(o => `<span class="recap-chip">${o}</span>`).join('')
+      : `<span class="recap-empty">${empty}</span>`;
+
+    const imgSrc = IMAGES[state.model]?.[state.finish] ?? IMAGES[state.model]?.blanc;
+
+    const modelTag: Record<string,string> = { mini:'Compact', mid:'Polyvalent', big:'Premium' };
+
+    box.innerHTML = `
+      <!-- Hero sombre -->
+      <div class="recap-hero">
+        <div class="recap-hero__text">
+          <span class="recap-hero__eyebrow">Jardicook · Configuration sur-mesure</span>
+          <h3 class="recap-hero__model">${state.modelLabel}</h3>
+          <span class="recap-hero__badge">${modelTag[state.model] ?? ''}</span>
+        </div>
+        <div class="recap-hero__img">
+          <img src="${imgSrc}" alt="${state.modelLabel}" />
+        </div>
+      </div>
+
+      <!-- Attributs finition -->
+      <div class="recap-body">
+        <p class="recap-section__title">Finition &amp; matériaux</p>
+        <div class="recap-attrs">
+          <div class="recap-attr">
+            <span class="recap-attr__label">Structure</span>
+            <strong class="recap-attr__val">${state.finishLabel}</strong>
+          </div>
+          <div class="recap-attr">
+            <span class="recap-attr__label">Panneaux de porte</span>
+            <strong class="recap-attr__val">${state.doorLabel}</strong>
+          </div>
+          <div class="recap-attr">
+            <span class="recap-attr__label">Motif de façade</span>
+            <strong class="recap-attr__val">${state.motifLabel}</strong>
+          </div>
+          <div class="recap-attr">
+            <span class="recap-attr__label">Plan de travail</span>
+            <strong class="recap-attr__val">${state.counterLabel}</strong>
+          </div>
+        </div>
+
+        <!-- Options cuisson -->
+        <p class="recap-section__title" style="margin-top:1.25rem;">Cuisson</p>
+        <div class="recap-chips">${makeChips(selectedCuisson)}</div>
+
+        <!-- Options confort -->
+        <p class="recap-section__title" style="margin-top:1rem;">Confort &amp; ambiance</p>
+        <div class="recap-chips">${makeChips(selectedConfort)}</div>
+      </div>
+    `;
+
+    const msg = document.getElementById('f-message') as HTMLTextAreaElement;
+    if(msg && !msg.value) msg.value = `Modèle : ${state.modelLabel}\nStructure : ${state.finishLabel}\nPanneaux : ${state.doorLabel}\nMotif : ${state.motifLabel}\nPlan de travail : ${state.counterLabel}\nOptions : ${state.options.join(', ')||'aucune'}`;
+  }
+
+  document.getElementById('devis-form')?.addEventListener('submit', e=>{
+    e.preventDefault();
+    (document.getElementById('devis-form') as HTMLElement).hidden = true;
+    (document.getElementById('form-confirm') as HTMLElement).hidden = false;
+  });
+
+  refreshCompat();
+  updateSummary();
+  goToStep(1);
+</script>
+
+<style>
+  .config-page { background: var(--color-bg); min-height: 100vh; }
+
+  .config-layout {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: var(--space-lg) var(--space-md);
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: var(--space-lg);
+    align-items: start;
+  }
+
+  /* ── PREVIEW ── */
+  .config-preview {
+    position: sticky;
+    top: calc(88px + var(--space-md));
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .config-preview__image-wrap {
+    position: relative;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    aspect-ratio: 4/3;
+    display: flex; align-items: center; justify-content: center;
+    padding: 1rem; overflow: hidden;
+  }
+
+  .config-preview__image-wrap img {
+    width: 100%; height: 100%; object-fit: contain;
+    transition: opacity 0.18s ease;
+  }
+
+  .config-preview__badge {
+    position: absolute; top: 0.8rem; left: 0.8rem;
+    background: var(--color-primary); color: #fff;
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.25rem 0.7rem; border-radius: var(--radius-xl);
+  }
+
+  /* Progress */
+  .config-steps-indicator {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 1rem;
+  }
+
+  .steps-track {
+    height: 4px; background: var(--color-border); border-radius: 99px; overflow: hidden; margin-bottom: 0.75rem;
+  }
+
+  .steps-fill {
+    height: 100%; background: var(--color-secondary); border-radius: 99px;
+    width: 0%; transition: width 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  }
+
+  .steps-labels { display: flex; justify-content: space-between; }
+
+  .step-dot {
+    font-size: 0.65rem; font-weight: 600; color: var(--color-text-light);
+    background: none; border: none; cursor: pointer; padding: 0.2rem 0.1rem;
+    transition: color 0.2s; text-transform: uppercase; letter-spacing: 0.06em;
+  }
+
+  .step-dot--active { color: var(--color-secondary); }
+
+  /* Summary */
+  .config-preview__summary {
+    background: var(--color-white); border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg); padding: 1rem;
+  }
+
+  .summary-title {
+    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--color-text-light); margin-bottom: 0.75rem;
+  }
+
+  .summary-list { list-style: none; display: flex; flex-direction: column; }
+
+  .summary-list li {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 0.8rem; padding: 0.45rem 0; border-bottom: 1px solid var(--color-border);
+  }
+
+  .summary-list li:last-child { border-bottom: none; }
+  .summary-list span  { color: var(--color-text-light); }
+  .summary-list strong { color: var(--color-text); font-size: 0.77rem; text-align: right; max-width: 55%; line-height: 1.3; }
+
+  /* ── STEPS ── */
+  .config-steps { min-width: 0; }
+  .step-panel { display: none; animation: fadeUp 0.3s ease; }
+  .step-panel--active { display: block; }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(12px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  .step-header {
+    display: flex; align-items: flex-start; gap: 1rem;
+    margin-bottom: var(--space-md); padding-bottom: var(--space-md);
+    border-bottom: 2px solid var(--color-border);
+  }
+
+  .step-num {
+    font-family: var(--font-heading); font-size: 2.5rem;
+    color: var(--color-border); line-height: 1; flex-shrink: 0;
+  }
+
+  .step-header h2 { font-size: 1.4rem; margin-bottom: 0.25rem; }
+  .step-header p  { font-size: 0.88rem; color: var(--color-text-light); }
+
+  /* Model cards */
+  .model-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-md); margin-bottom: var(--space-md); }
+
+  .model-card {
+    position: relative; display: flex; flex-direction: column;
+    background: var(--color-white); border: 2px solid var(--color-border);
+    border-radius: var(--radius-lg); overflow: hidden; cursor: pointer; text-align: left;
+    transition: border-color 0.18s, box-shadow 0.18s, transform 0.15s;
+  }
+
+  .model-card:hover { border-color: var(--color-secondary); transform: translateY(-3px); box-shadow: 0 6px 24px rgba(196,149,106,0.18); }
+  .model-card--active { border-color: var(--color-secondary); box-shadow: 0 4px 20px rgba(196,149,106,0.22); }
+
+  .model-card__img-wrap {
+    background: var(--color-bg); padding: 1rem; aspect-ratio: 4/3;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .model-card__img-wrap img { width:100%; height:100%; object-fit:contain; }
+
+  .model-card__body { padding: 1rem; flex:1; display:flex; flex-direction:column; gap:0.4rem; justify-content:space-between; }
+
+  .model-card__tag {
+    display:inline-block; font-size:0.65rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--color-secondary); background:rgba(196,149,106,0.12);
+    padding:0.2rem 0.6rem; border-radius:var(--radius-xl); width:fit-content;
+  }
+
+  .model-card__tag--premium { background:var(--color-primary); color:white; }
+  .model-card__body h3 { font-size:1rem; margin:0; }
+  .model-card__body p  { font-size:0.8rem; color:var(--color-text-light); line-height:1.5; }
+
+  .model-card__specs { list-style:none; display:flex; flex-direction:column; gap:0.2rem; }
+
+  .model-card__specs li { font-size:0.72rem; color:var(--color-text-light); padding-left:0.9rem; position:relative; }
+  .model-card__specs li::before { content:'–'; position:absolute; left:0; color:var(--color-secondary); }
+
+  .model-card__check {
+    position:absolute; top:0.7rem; right:0.7rem; width:20px; height:20px;
+    border-radius:50%; border:2px solid var(--color-border); background:white; transition:all 0.18s;
+  }
+
+  .model-card--active .model-card__check { background:var(--color-secondary); border-color:var(--color-secondary); }
+  .model-card--active .model-card__check::after {
+    content:''; position:absolute; top:4px; left:4px; width:8px; height:8px;
+    border-radius:50%; background:white;
+  }
+
+  /* Option groups */
+  .option-group { margin-bottom: var(--space-md); }
+
+  .option-group__title {
+    font-size:0.78rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--color-text-light); margin-bottom:0.4rem;
+    display:flex; align-items:center; gap:0.5rem;
+  }
+
+  .option-group__title::after { content:''; flex:1; height:1px; background:var(--color-border); }
+
+  .option-group__desc { font-size:0.78rem; color:var(--color-text-light); margin-bottom:0.75rem; font-style:italic; }
+
+  /* Option cards */
+  .option-cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(110px,1fr)); gap:0.65rem; }
+  .option-cards--finish { grid-template-columns:repeat(auto-fill,minmax(110px,1fr)); }
+  .option-cards--motif  { grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); }
+  .option-cards--equip  { grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); }
+
+  .option-card {
+    position:relative; display:flex; flex-direction:column; align-items:center; gap:0.4rem;
+    padding:0.8rem 0.6rem 0.65rem; border:2px solid var(--color-border); border-radius:var(--radius-md);
+    background:var(--color-bg); cursor:pointer; text-align:center;
+    transition:border-color 0.18s, transform 0.15s, box-shadow 0.18s;
+  }
+
+  .option-card:hover:not(:disabled) { border-color:var(--color-secondary); transform:translateY(-2px); box-shadow:0 4px 14px rgba(196,149,106,0.15); }
+  .option-card--active { border-color:var(--color-secondary)!important; background:var(--color-white); box-shadow:0 2px 12px rgba(196,149,106,0.2); }
+
+  .option-card--selected { border-color:var(--color-primary)!important; background:var(--color-white); box-shadow:0 2px 10px rgba(44,32,16,0.1); }
+
+  .option-card--included {
+    border-color:var(--color-secondary)!important;
+    background:rgba(196,149,106,0.06); cursor:default;
+  }
+
+  .option-card--included::after {
+    content:'INCLUS'; position:absolute; bottom:0.35rem; right:0.45rem;
+    font-size:0.52rem; font-weight:800; letter-spacing:0.08em;
+    color:var(--color-secondary);
+  }
+
+  .option-card--included .toggle-check { background:var(--color-secondary); border-color:var(--color-secondary); }
+
+  .option-card--soon, .option-card--disabled { opacity:0.38; cursor:not-allowed; transform:none!important; box-shadow:none!important; }
+
+  .option-card__label { font-size:0.78rem; font-weight:600; color:var(--color-text); line-height:1.2; }
+  .option-card__sub   { font-size:0.67rem; color:var(--color-text-light); }
+
+  .soon-badge {
+    position:absolute; top:0.3rem; right:0.3rem; font-size:0.58rem; font-weight:700;
+    background:var(--color-border); color:var(--color-text-light);
+    padding:0.08rem 0.38rem; border-radius:var(--radius-xl); text-transform:uppercase;
+  }
+
+  .swatch { width:46px; height:46px; border-radius:var(--radius-md); flex-shrink:0; }
+  .motif-swatch { width:100%; height:42px; border-radius:var(--radius-sm); flex-shrink:0; border:1px solid rgba(0,0,0,0.06); }
+
+  .toggle-check {
+    position:absolute; top:0.4rem; right:0.4rem; width:15px; height:15px;
+    border-radius:50%; border:2px solid var(--color-border); background:white; transition:all 0.15s;
+  }
+
+  .option-card--selected .toggle-check { background:var(--color-primary); border-color:var(--color-primary); }
+  .option-card--selected .toggle-check::after {
+    content:''; position:absolute; top:2px; left:2px; width:7px; height:7px; border-radius:50%; background:white;
+  }
+
+  /* Nav */
+  .step-nav { display:flex; justify-content:space-between; align-items:center; margin-top:var(--space-md); padding-top:var(--space-md); border-top:1px solid var(--color-border); }
+  .step-nav--right { justify-content:flex-end; }
+  .step-nav--left  { justify-content:flex-start; }
+
+  /* ── RECAP ── */
+  .recap-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+    align-items: start;
+  }
+
+  /* Carte recap */
+  .recap-box {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  }
+
+  /* Hero sombre */
+  .recap-hero {
+    background: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.5rem 1.75rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .recap-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(196,149,106,0.18) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .recap-hero__text { position: relative; z-index: 1; }
+
+  .recap-hero__eyebrow {
+    display: block;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    margin-bottom: 0.5rem;
+  }
+
+  .recap-hero__model {
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.15;
+    margin: 0 0 0.6rem;
+  }
+
+  .recap-hero__badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    background: var(--color-secondary);
+    padding: 0.2rem 0.75rem;
+    border-radius: var(--radius-xl);
+  }
+
+  .recap-hero__img {
+    width: 140px;
+    height: 105px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 6px 18px rgba(0,0,0,0.35));
+  }
+
+  .recap-hero__img img { width: 100%; height: 100%; object-fit: contain; }
+
+  /* Corps recap */
+  .recap-body { padding: 1.5rem; background: var(--color-white); }
+
+  .recap-section__title {
+    font-size: 0.58rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    margin-bottom: 0.65rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .recap-section__title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--color-border);
+  }
+
+  /* Attributs 2×2 */
+  .recap-attrs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .recap-attr {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 0.65rem 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .recap-attr__label {
+    font-size: 0.58rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-light);
+  }
+
+  .recap-attr__val {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  /* Chips options */
+  .recap-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0; }
+
+  .recap-chip {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    background: rgba(196,149,106,0.1);
+    border: 1.5px solid rgba(196,149,106,0.4);
+    padding: 0.25rem 0.7rem;
+    border-radius: var(--radius-xl);
+    line-height: 1.4;
+  }
+
+  .recap-empty { font-size: 0.78rem; color: var(--color-text-light); font-style: italic; }
+
+  /* ── FORMULAIRE ── */
+  .recap-form {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    position: sticky;
+    top: calc(88px + var(--space-md));
+  }
+
+  .recap-form__head {
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    padding: 1.25rem 1.5rem;
+  }
+
+  .recap-form__eyebrow {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  .recap-form__title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0 0 0.2rem;
+  }
+
+  .recap-form__sub {
+    font-size: 0.78rem;
+    color: var(--color-text-light);
+    margin: 0;
+  }
+
+  .recap-form .form { padding: 1.5rem; }
+
+  .recap-form__submit { width: 100%; margin-top: 0.25rem; }
+
+  .recap-form__trust {
+    font-size: 0.68rem;
+    color: var(--color-text-light);
+    text-align: center;
+    margin-top: 0.65rem;
+  }
+
+  .form { display:flex; flex-direction:column; gap:0.75rem; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; }
+  .form-group { display:flex; flex-direction:column; gap:0.3rem; }
+  .form-group label { font-size:0.78rem; font-weight:600; color:var(--color-text); }
+
+  .form-group input, .form-group textarea {
+    padding:0.6rem 0.85rem; border:1.5px solid var(--color-border);
+    border-radius:var(--radius-md); background:var(--color-bg);
+    font-size:0.88rem; color:var(--color-text); font-family:var(--font-body); resize:vertical;
+    transition:border-color 0.18s;
+  }
+
+  .form-group input:focus, .form-group textarea:focus { outline:none; border-color:var(--color-secondary); }
+
+  .form-confirm { text-align:center; padding:2rem 1rem; }
+  .confirm-icon { width:52px; height:52px; border-radius:50%; background:var(--color-secondary); color:white; font-size:1.4rem; display:flex; align-items:center; justify-content:center; margin:0 auto 1rem; }
+  .form-confirm h3 { font-size:1.15rem; margin-bottom:0.5rem; }
+  .form-confirm p  { color:var(--color-text-light); font-size:0.88rem; }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .config-layout { grid-template-columns:1fr; }
+    .config-preview { position:static; display:grid; grid-template-columns:1fr 1fr; }
+    .model-cards { grid-template-columns:repeat(2,1fr); }
+    .recap-grid  { grid-template-columns:1fr; }
+    .recap-form  { position:static; }
+  }
+
+  @media (max-width: 768px) {
+    .config-preview { grid-template-columns:1fr; }
+    .model-cards { grid-template-columns:1fr; }
+    .option-cards--equip { grid-template-columns:repeat(2,1fr); }
+    .form-row { grid-template-columns:1fr; }
+    .recap-attrs { grid-template-columns:1fr 1fr; }
+
+    /* Cartes modèle : layout horizontal compact */
+    .model-card { flex-direction:row; }
+    .model-card__img-wrap { width:110px; flex-shrink:0; aspect-ratio:auto; height:auto; }
+    .model-card__body p   { display:none; }   /* masque la description */
+    .model-card__specs    { display:none; }   /* masque les specs */
+  }
+
+  @media (max-width: 480px) {
+    .recap-attrs { grid-template-columns:1fr; }
+  }
+</style>
